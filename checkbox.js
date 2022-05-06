@@ -1,6 +1,6 @@
 class Checkbox extends Form{
-	constructor(question, subquestions, id) {
-		super(question,subquestions,id)
+	constructor(question, subquestions,category, id) {
+		super(question,subquestions,category,id)
 		this.answers = [];
 		this.checked = [];
 		this.sumValues = 0;
@@ -49,7 +49,7 @@ class Checkbox extends Form{
             <div  class="progress">
                 <div class="fill"></div>
             </div>
-			<p class="is-not-validate-info">To pole musi być wypełnione w 100%</p>
+
         </div>
         `;
 

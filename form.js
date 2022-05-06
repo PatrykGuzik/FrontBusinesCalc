@@ -3,9 +3,10 @@ class Form{
 	static questions = []
 	static nbOfQuestions=0
 
-    constructor(question, subquestions = null, id) {
+    constructor(question, subquestions = null, category, id) {
 		this.question = question;
 		this.subquestions = subquestions;
+		this.category = category;
 		this.id = id;
 		this.answers = [];
 	}
@@ -14,16 +15,16 @@ class Form{
 		jsonData.forEach((element, index) => {
 			switch (element.type) {
 				case "radio":
-					new Radio(element.question, element.subquestions, `card${index+1}`).createInput()
+					new Radio(element.question, element.subquestions, element.category, `card${index+1}`).createInput()
 					break;
 				case "input":
-					new InputNumber(element.question, element.subquestions, `card${index+1}`, element.min, element.max, element.unit).createInput()
+					new InputNumber(element.question, element.subquestions, element.category, `card${index+1}`, element.min, element.max, element.unit).createInput()
 					break;
 				case "checkbox":
-					new Checkbox(element.question, element.subquestions, `card${index+1}`).createInput()
+					new Checkbox(element.question, element.subquestions, element.category, `card${index+1}`).createInput()
 					break;
 				case "range":
-					new Range(element.question, element.subquestions, `card${index+1}`, element.min, element.max, element.unit).createInput()
+					new Range(element.question, element.subquestions, element.category, `card${index+1}`, element.min, element.max, element.unit).createInput()
 					break;
 				default:
 					break;
@@ -50,7 +51,10 @@ class Form{
 	
 		multiStepForm.innerHTML = formInner
 	}
-
+	
+	static getCategoryName(questionIndex) {
+		return Form.questions[questionIndex].category
+	}
 
 	saveFormToQuestions(){
 		Form.questions.push(this)

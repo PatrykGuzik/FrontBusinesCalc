@@ -1,6 +1,6 @@
 class InputNumber extends Form {
-	constructor(question, subquestions = null, id, min, max, unit) {
-		super(question,subquestions,id)
+	constructor(question, subquestions = null,category, id, min, max, unit) {
+		super(question,subquestions,category,id)
 		this.min = min;
 		this.max = max;
 		this.unit = unit;
@@ -33,12 +33,12 @@ class InputNumber extends Form {
 		let subquestionsHTML = "";
 		if (this.subquestions) {
 			this.subquestions.forEach((subq, index) => {
-				subquestionsHTML += `<p>${subq}</p> <label><input data-chb="${
+				subquestionsHTML += `<p>${subq}</p> <label class="number-box"><input data-chb="${
 					index + 1
 				}" type="number" min="${this.min}" max="${this.max}"><span>${this.unit}</span></label>`;
 			});
 		} else {
-			subquestionsHTML += `<input data-chb type="number" min="${this.min}" max="${this.max}"><span>${this.unit}</span>`;
+			subquestionsHTML += `<label class="number-box"><input data-chb type="number" min="${this.min}" max="${this.max}"><span>${this.unit}</span></label>`;
 		}
 
 		const validateInfo = `<p class="is-not-validate-info">uzupełnij wszystkie pola wartościami pomiędzy ${this.min} a ${this.max}</p>`

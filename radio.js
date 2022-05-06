@@ -1,6 +1,6 @@
 class Radio extends Form{
-    constructor(question, subquestions, id) {
-		super(question,subquestions,id)
+    constructor(question, subquestions,category, id) {
+		super(question,subquestions,category,id)
 		this.answers = [];
         this.isOneChecked = false;
 	}
