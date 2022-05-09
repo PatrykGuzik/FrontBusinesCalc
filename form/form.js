@@ -1,7 +1,8 @@
 class Form{
 
 	static questions = []
-	static nbOfQuestions=0
+	static nbOfQuestions = 0
+	static conditionalQuestions = []
 
     constructor(question, subquestions = null, category, id) {
 		this.question = question;

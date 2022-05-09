@@ -19,7 +19,6 @@ class InputNumber extends Form {
 				return { question: this.question, subquestion: sbq, value: null };
 			});
 		} else {
-			console.log("set");
 			this.answers = { question: this.question, value: null };
 		}
 	}

@@ -23,7 +23,7 @@ class Checkbox extends Form{
 		});
 	}
 	getAnswers(){
-		return this.answers
+		return this.answers.map(answer => answer.isChecked)
 	}
 	updateSumValues() {
 		this.sumValues = this.answers.reduce((pr, curr) => pr + curr.value, 0);

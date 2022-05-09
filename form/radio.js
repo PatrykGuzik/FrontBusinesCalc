@@ -18,6 +18,10 @@ class Radio extends Form{
 		});
 	}
 
+	getAnswers(){
+		return this.answers.map(answer => answer.isChecked)
+	}
+
 
     renderBox() {
 		this.setAnswers();
