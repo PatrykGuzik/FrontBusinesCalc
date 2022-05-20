@@ -18,8 +18,10 @@ class MultistepForm {
 		this.clickBtnsEvents();
 		this.showCurrentStep();
 		this.drawCategoryName(0);
-		console.log(this.visibleSteps);
-		console.log(Form.questions);
+	}
+
+	setCurrentStep(currentStep){
+		this.currentStep = currentStep
 	}
 
 	clickBtnsEvents() {
@@ -76,11 +78,12 @@ class MultistepForm {
 			step.classList.toggle("right", index < this.currentStep);
 			step.classList.toggle("center", index === this.currentStep);
 		});
+		this.updateProgressBar()
 	}
 
 	goToFinish() {
 		console.log(Form.questions);
-		calcCarbonFootprint(Form.questions);
+		location.href = "finish.html";
 	}
 
 	// progress bar
@@ -136,7 +139,6 @@ class MultistepForm {
 		// W jaki sposób pracujesz?
 		// if(this.isCheckedInRadio(0, 0))	this.hideQuestion(1);
 		// else this.showQuestion(1);
-		console.log(Form.conditionalQuestions);
 
 		Form.conditionalQuestions.map(q => {
 			switch (q.type) {

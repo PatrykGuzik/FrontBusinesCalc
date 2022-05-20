@@ -78,10 +78,10 @@ class InputNumber extends Form {
 
 	isValidate() {
 		if (this.subquestions) {
-			if (this.answers.every(answer => answer.value != null)) return true
+			if (this.answers.every(answer => answer.value != null && answer.value != '')) return true
 			else return false
 		} else {
-			if (this.answers.value !== null && this.valueIsOffScale()) return true;
+			if (this.answers.value !== null && this.valueIsOffScale() && this.answers.value !== '') return true;
 			else return false;
 		}
 	}

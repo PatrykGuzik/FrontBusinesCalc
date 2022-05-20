@@ -46,16 +46,20 @@ const jsonProject = [
 	},
 ];
 
-const conditionalQuestions=[
-    {indexQuestion:0, type:"radio", ifIsChecked:0, hide:[1]},
-    {indexQuestion:2, type:"radio", ifIsChecked:1, hide:[3]},
-    {indexQuestion:4, type:"radio", ifIsChecked:1, hide:[5]},
-    {indexQuestion:8, type:"radio", ifIsChecked:1, hide:[9,10,11]},
-    {indexQuestion:12, type:"checkbox", ifIsChecked:0, hide:[13,14,15,16]}
-]
+const employeeConditionalQuestions = [
+	// { indexQuestion: 0, type: "radio", ifIsChecked: 0, hide: [1] },
+	// { indexQuestion: 2, type: "radio", ifIsChecked: 1, hide: [3] },
+	// { indexQuestion: 4, type: "radio", ifIsChecked: 1, hide: [5] },
+	// { indexQuestion: 8, type: "radio", ifIsChecked: 1, hide: [9, 10, 11] },
+	// {
+	// 	indexQuestion: 12,
+	// 	type: "checkbox",
+	// 	ifIsChecked: 0,
+	// 	hide: [13, 14, 15, 16],
+	// },
+];
 
-
-const mainData = [
+const employeeData = [
 	{
 		id: 1,
 		question: "W jaki sposób pracujesz?",
@@ -262,18 +266,6 @@ const mainData = [
 		max: 10,
 		unit: "osobami",
 	},
-	// {
-	// 	id: 18,
-	// 	question: "Czy część podróży służbowych odbywasz samolotem?",
-	// 	type: "radio",
-	// 	subquestions: "tak;nie",
-	// 	category: "transport",
-	// 	number: 18,
-	// 	name: "isPlane",
-	// 	min: null,
-	// 	max: null,
-	// 	unit: null,
-	// },
 	{
 		id: 19,
 		question: "Ile godzin lotów służbowych wykonałeś w ciągu roku?",
@@ -286,4 +278,20 @@ const mainData = [
 		max: 1000,
 		unit: "godzin",
 	},
+	{
+		id: 20,
+		question: "Na ilu ekranach pracujesz?",
+		type: "input",
+		subquestions: "",
+		category: "praca zdalna",
+		number: 8,
+		name: null,
+		min: 0,
+		max: 5,
+		unit: "ekranów",
+	},
 ];
+
+const managerConditionalQuestions = [];
+
+const managerData = [{"id":1,"question":"Ile m2 biur posiada firma?","type":"input","subquestions":"","number":1,"name":"surOffice","min":0,"max":1000,"unit":"m2"},{"id":2,"question":"Ile pracowników pracuje w biurze?","type":"input","subquestions":"","number":2,"name":"numEmp","min":0,"max":10000,"unit":null},{"id":3,"question":"Roczne zużycie energii elektrycznej w kWh","type":"input","subquestions":"","number":3,"name":"annEnergy","min":0,"max":10000,"unit":"kwh"},{"id":4,"question":"jakie są roczne koszty zapłaty za energię elektryczną","type":"input","subquestions":"","number":4,"name":null,"min":0,"max":100000,"unit":"zł"},{"id":5,"question":"Czy energia elektryczna generowana jest z OZE?","type":"radio","subquestions":"tak;nie","number":5,"name":null,"min":null,"max":null,"unit":null},{"id":6,"question":"W ilu % pokrywa zapotrzebowanie?","type":"range","subquestions":"","number":6,"name":null,"min":0,"max":100,"unit":"%"},{"id":7,"question":"Zużycie energii cieplnej w kWh","type":"input","subquestions":"","number":7,"name":null,"min":0,"max":10000,"unit":"kWh"},{"id":8,"question":"Podaj ilość m3 gazu zużytego w ciągu roku","type":"input","subquestions":"","number":8,"name":null,"min":0,"max":10000,"unit":"m3"},{"id":9,"question":"Czy stosujecie w biurze segregację odpadów na plastik, papier, szkło i frakcję BIO ?","type":"radio","subquestions":"tak;nie","number":9,"name":null,"min":null,"max":null,"unit":null},{"id":10,"question":"Ile kg danych śmieci wyrzucanych jest w biurze miesięcznie","type":"range","subquestions":"plastik;szkło;bio;papier","number":10,"name":null,"min":0,"max":100,"unit":"%"},{"id":11,"question":"Ile wynoszą rachunki miesięcznie za wywóz śmieci?","type":"input","subquestions":"","number":11,"name":null,"min":0,"max":1000,"unit":"zł"},{"id":12,"question":"Ile litrów paliwa ze wskazanych rodzajów zostało wykorzystane przez flotę biura w ciągu roku?","type":"input","subquestions":"benzyna;\r\ndiesel;\r\nLPG;\r\nenergia elektryczna","number":12,"name":null,"min":0,"max":10000,"unit":"l"},{"id":13,"question":"Ile wynosi całkowite zużycie wody w biurze?","type":"input","subquestions":"","number":13,"name":null,"min":0,"max":10000,"unit":"l"},{"id":14,"question":"Ile m3 ścieków wyprodukowanych jest w biurze?","type":"input","subquestions":"","number":14,"name":null,"min":0,"max":10000,"unit":"m3"}]
