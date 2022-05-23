@@ -1,55 +1,55 @@
 // data from database
 
-// const endpoint = "http://127.0.0.1:8000/api/customers/?format=json";
+const endpoint = "http://127.0.0.1:8000/api/customers/?format=json";
 
-// fetch(endpoint)
-// 	.then(blob => blob.json())
-// 	.then(data => checkCode(data));
+fetch(endpoint)
+	.then(blob => blob.json())
+	.then(data => checkCode(data));
 
-// function checkCode(data) {
-// 	console.log(data);
-// 	const companies = data;
+function checkCode(data) {
+	console.log(data);
+	const companies = data;
 
-// 	const getCoName = code => {
-// 		findCompany = companies.find(customer => customer.code === code);
-// 		if (findCompany) findCompany = findCompany.name;
-// 		return findCompany;
-// 	};
-
-
-// 	const myUrl = new URL(window.location.href);
-// 	const code = myUrl.searchParams.get("code");
-// 	const customerName = document.querySelector(".customer-name");
-// 	const mainCustomerText = document.querySelector("#main-customer-text");
+	const getCoName = code => {
+		findCompany = companies.find(customer => customer.code === code);
+		if (findCompany) findCompany = findCompany.name;
+		return findCompany;
+	};
 
 
-// 	if (code && getCoName(code)) {
-//         customerName.innerHTML = getCoName(code)
-// 	}else{
-// 	    console.log("nie wybrano firmy")
-//         mainCustomerText.innerHTML = "Oblicz jaki wpływ na środowisko ma Twoja praca"
-//         customerName.innerHTML = ""
+	const myUrl = new URL(window.location.href);
+	const code = myUrl.searchParams.get("code");
+	const customerName = document.querySelector(".customer-name");
+	const mainCustomerText = document.querySelector("#main-customer-text");
+
+
+	if (code && getCoName(code)) {
+        customerName.innerHTML = getCoName(code)
+	}else{
+	    console.log("nie wybrano firmy")
+        mainCustomerText.innerHTML = "Oblicz jaki wpływ na środowisko ma Twoja praca"
+        customerName.innerHTML = ""
         
-// 	}
+	}
 
-// 	goToCalc()
-// }
+	goToCalc()
+}
 
 
 
 // Local data
-const myUrl = new URL(window.location.href);
-const code = myUrl.searchParams.get("code");
-const customerName = document.querySelector(".customer-name");
-const mainCustomerText = document.querySelector("#main-customer-text");
-if (code && getCoName(code)) {
-	customerName.innerHTML = getCoName(code)
-}else{
-	console.log("nie wybrano firmy")
-	mainCustomerText.innerHTML = "Oblicz jaki wpływ na środowisko ma Twoja praca"
-	customerName.innerHTML = ""
-}
-goToCalc()
+// const myUrl = new URL(window.location.href);
+// const code = myUrl.searchParams.get("code");
+// const customerName = document.querySelector(".customer-name");
+// const mainCustomerText = document.querySelector("#main-customer-text");
+// if (code && getCoName(code)) {
+// 	customerName.innerHTML = getCoName(code)
+// }else{
+// 	console.log("nie wybrano firmy")
+// 	mainCustomerText.innerHTML = "Oblicz jaki wpływ na środowisko ma Twoja praca"
+// 	customerName.innerHTML = ""
+// }
+// goToCalc()
 
 
 

@@ -1,70 +1,106 @@
 // Obliczenia Manager -----------------------------------------------------------------
 // ------------------------------------------------------------------------------------
-function calcManagerCarbonFootprint(){
+function calcManagerCarbonFootprint(data){
     const answers = Form.questions.map(a=>a.answers)
-    console.log(answers);
+    console.log(getValueByName("M_is_not_oze",data));
+    console.log(data);
+
+    // ---Odpowiedzi---
 
     // 0 Jaką powierzchnię w budynku zajmuje miejsce pracy?
     const officeSpace = getAloneAnswerFromInputText(answers,0) 
-    console.log("officeSpace", officeSpace);
-
     // 1 Ile pracowników pracuje w tym miejscu?
     const nrOfemployees = getAloneAnswerFromInputText(answers,1)
-    console.log("nrOfemployees", nrOfemployees);
-
     // 2 Roczne zużycie energii elektrycznej w kWh
     const annualElectConsum = getAloneAnswerFromInputText(answers,2)
-    console.log("annualElectConsum", annualElectConsum);
-    
     // 3 Jakie są roczne koszty zapłaty za energie elektryczna? 
     const annualCostElect = getAloneAnswerFromInputText(answers,3)
-    console.log("annualCostElect", annualCostElect);
-
     // 4 Czy energia elektryczna generowana jest z OZE?
     const isOZE = getAnswerFromRadio(answers,4)
-    console.log("isOZE", isOZE);
-
     // 5 W ilu % energia z OZE pokrywa zapotrzebowanie?
     const percentOZE = getAloneAnswerFromRange(answers,5)
-    console.log("percentOZE:", percentOZE);
-
     // 6 Zużycie energii cieplnej w kWh?
     const warmEnergyConsum = getAloneAnswerFromInputText(answers,6)
-    console.log("warmEnergyConsum:", warmEnergyConsum);
-
     // 7 Podaj ilość m3 gazu zużytego w ciągu roku
     const m3GasConsum = getAloneAnswerFromInputText(answers,7)
-    console.log("m3GasConsum", m3GasConsum);
-
     // 8 Czy stosujecie w biurze segregację odpadów na plastik, papier, szkło i frakcję BIO ?
     const isSegregation = getAnswerFromRadio(answers,8)
-    console.log("isSegregation", isSegregation);
-
     // 9 Ile kg danych śmieci wyrzucanych jest w biurze miesięcznie
     const monthThrownTrash = getMultiAnswersFromRange(answers,9)
     const trashPlastic = monthThrownTrash[0]
     const trashGlass = monthThrownTrash[1]
     const trashBio = monthThrownTrash[2]
     const trashPaper = monthThrownTrash[3]
-    console.log("monthThrownTrash", monthThrownTrash, "-","Plastic-", trashPlastic,"Glass-",trashGlass,"Bio-",trashBio,"Paper-",trashPaper);
-
-
     // 10 Ile wynoszą rachunki miesięczne za wywóz śmieci?
     const trashCost = getAloneAnswerFromInputText(answers,10)
-    console.log("trashCost", trashCost);
-
     // 11 Ile litrów paliwa ze wskazanych rozdzajów zostało wykorzystane przez flotę biura w ciągu roku?
     const fuelConsum = getMultiAnswerFromInputText(answers,11)
-    console.log("fuelConsum", fuelConsum);
-
-
     // 12 Ile wynosi całkowite zużycie wody w biurze?
     const waterConsum = getAloneAnswerFromInputText(answers,12)
-    console.log("waterConsum", waterConsum);
-
     // 13 Ile m3 ścieków wyprodukowanych jest w biurze? 
     const sewageProd = getAloneAnswerFromInputText(answers,13)
-    console.log("sewageProd", sewageProd);
+
+
+    //  ---OBLICZENIA---
+
+    // Energia elektryczna
+    let ElectrycityEnergy_CO2 = 0
+    let V_is_oze = 0
+
+    if (annualElectConsum == 0) {
+        if (isOZE === 2) V_is_oze = getValueByName("M_is_not_oze",data);
+        else V_is_oze = 0;
+        ElectrycityEnergy_CO2 = getValueByName("M_elec_energy",data) * annualCostElect * V_is_oze;
+    }else{
+        if (isOZE === 1) V_is_oze = annualElectConsum * ( percentOZE * 0.01) * getValueByName("M_is_not_oze",data);
+        else V_is_oze = 0
+        ElectrycityEnergy_CO2 = (annualElectConsum * getValueByName("M_is_not_oze",data)) - V_is_oze;
+    }
+
+    // Energia cieplna
+    let WarmEnergy_CO2 = 0;
+    WarmEnergy_CO2 = getValueByName("M_warm_energy", data) * warmEnergyConsum;
+
+
+
+    // Gaz
+    let GasConsum_CO2 = 0
+    GasConsum_CO2 = m3GasConsum * getValueByName("M_gas", data);
+
+    // Śmieci
+    let Waste_CO2 = 0
+    if (isSegregation == 1) Waste_CO2 = trashCost/
+                            getValueByName("M_waste_box", data)*
+                            1000*
+                            getValueByName("M_waste_box_mix", data)*
+                            getValueByName("M_waste_average", data)*
+                            12;
+    else                    Waste_CO2 = trashCost/
+                            getValueByName("M_waste_box", data)/
+                            2*1000*
+                            getValueByName("M_waste_box_mix", data)*
+                            getValueByName("M_waste_average_burn", data)*
+                            12;
+
+
+
+    console.log(Waste_CO2);
+
+
+    // console.log("sewageProd", sewageProd);
+    // console.log("waterConsum", waterConsum);
+    // console.log("fuelConsum", fuelConsum);
+    // console.log("trashCost", trashCost);
+    // console.log("isSegregation", isSegregation);
+    // console.log("m3GasConsum", m3GasConsum);
+    // console.log("warmEnergyConsum:", warmEnergyConsum);
+    // console.log("percentOZE:", percentOZE);
+    // console.log("isOZE", isOZE);
+    // console.log("annualCostElect", annualCostElect);
+    // console.log("annualElectConsum", annualElectConsum);
+    // console.log("nrOfemployees", nrOfemployees);
+    // console.log("officeSpace", officeSpace);
+    // console.log("monthThrownTrash", monthThrownTrash, "-","Plastic-", trashPlastic,"Glass-",trashGlass,"Bio-",trashBio,"Paper-",trashPaper);
 }
 
 
@@ -219,4 +255,8 @@ function getAnswersFromCheckbox(answers,index) {
     })
 
     return answer
+}
+
+function getValueByName(name, data) {
+    return data.find(element => element.name == name).value
 }
