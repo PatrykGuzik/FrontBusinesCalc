@@ -40,10 +40,10 @@ class Range extends Form{
 					index + 1
 				}" class="pc-v">${percentValue} ${this.unit}</p><input data-chb="${
 					index + 1
-				}" type="range" min="${this.min}" max="${this.max}">`;
+				}" type="range" class="range" min="${this.min}" max="${this.max}">`;
 			});
 		} else {
-			subquestionsHTML += `<p data-chf class="pc-v">${percentValue} ${this.unit}</p><input data-chb type="range" min="${this.min}" max="${this.max}">`;
+			subquestionsHTML += `<p data-chf class="pc-v">${percentValue} ${this.unit}</p><input data-chb type="range" class="range" min="${this.min}" max="${this.max}">`;
 		}
 
 		box.innerHTML = `
@@ -67,6 +67,12 @@ class Range extends Form{
 
 				this.answers[indexInput].value = inputValue;
 				percentValue.innerHTML = `${inputValue} ${this.unit}`
+
+
+				//update range bar	
+				const max = input_box.querySelector('[data-chb]').max
+				const percent = parseInt(inputValue * 100 / max) 
+				input_box.querySelector('[data-chb]').style.background = `linear-gradient(90deg, #17A8B5 ${percent}%, #A6D9DE ${percent}%)`
 			});
 		}else{
 			input_box.addEventListener("input", () => {
@@ -79,7 +85,13 @@ class Range extends Form{
 				)
 
 				this.answers.value = inputValue;
-				percentValue.innerHTML = `${inputValue} ${this.unit}`
+				percentValue.innerHTML = `${inputValue} ${this.unit}`;
+
+
+				//update range bar	
+				const max = input_box.querySelector('[data-chb]').max
+				const percent = parseInt(inputValue * 100 / max) 
+				input_box.querySelector('[data-chb]').style.background = `linear-gradient(90deg, #17A8B5 ${percent}%, #A6D9DE ${percent}%)`
 			});
 		}
 	}

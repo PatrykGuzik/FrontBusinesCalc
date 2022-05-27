@@ -37,7 +37,7 @@ class InputNumber extends Form {
 				}" type="number" min="${this.min}" max="${this.max}"><span>${this.unit}</span></label>`;
 			});
 		} else {
-			subquestionsHTML += `<label class="number-box"><input data-chb type="number" min="${this.min}" max="${this.max}"><span>${this.unit}</span></label>`;
+			subquestionsHTML += `<label class="number-box"><input data-chb type="number" placeholder="Wpisz liczbę" min="${this.min}" max="${this.max}"><span>${this.unit}</span></label>`;
 		}
 
 		const validateInfo = `<p class="is-not-validate-info">uzupełnij wszystkie pola wartościami pomiędzy ${this.min} a ${this.max}</p>`

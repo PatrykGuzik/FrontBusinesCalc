@@ -83,7 +83,11 @@ class MultistepForm {
 
 	goToFinish() {
 		console.log(Form.questions);
-		location.href = "finish.html";
+
+		// tymczasowe - funkcja przypisana do przycisku: wyślij
+		showAnswers();
+		// sessionStorage.setItem("sum", Form.sum_co2)
+		// location.href = "finish.html";
 	}
 
 	// progress bar
@@ -135,11 +139,6 @@ class MultistepForm {
 	}
 
 	setConditionalQuestions() {
-		// ogólne
-		// W jaki sposób pracujesz?
-		// if(this.isCheckedInRadio(0, 0))	this.hideQuestion(1);
-		// else this.showQuestion(1);
-
 		Form.conditionalQuestions.map(q => {
 			switch (q.type) {
 				case "radio":
@@ -166,10 +165,25 @@ class MultistepForm {
 					}
 					break;
 
+				case "text":
+					console.log(this.isValueInTextInput(q.indexQuestion, q.ifIsValue));
+					if (this.isValueInTextInput(q.indexQuestion, q.ifIsValue)) {
+						q.hide.forEach(element => {
+							this.hideQuestion(element);
+						});
+					} else {
+						q.hide.forEach(element => {
+							this.showQuestion(element);
+						});
+					}
+					break
+
 				default:
 					break;
 			}
 		});
+
+
 	}
 
 	// UKRYWA Jeżeli zaznaczone
@@ -181,4 +195,11 @@ class MultistepForm {
 	isCheckedInCheckbox(questionIndex, answerIndex){
 		return Form.questions[questionIndex].getAnswers()[answerIndex] === false;
 	}
+
+	// POKAZUJE Jeżeli zgodne z wartoścą
+	isValueInTextInput(questionIndex, isValue){
+		return Form.questions[questionIndex].getAnswers().value !== isValue;
+	}
+
+
 }

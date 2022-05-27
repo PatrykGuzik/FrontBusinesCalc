@@ -67,14 +67,21 @@ class Form{
 
     getButtonsHTML(index) {
 		
-		if (index == 0) return `<div class="btns-step"><button data-next type='button'>NEXT</button></div>`;
+		if (index == 0) return `<div class="btns-step"><button data-next type='button'>NASTĘPNY KROK</button></div>`;
 		else if (index == Form.nbOfQuestions-1)
 			return `
-			<div class="btns-step"><button data-previous type='button'>PREVIOUS</button> 
-			<button data-send type='button'>SEND</button></div>`;
+			<div class="btns-step">
+				<div class="btns-step"><button data-previous type='button'></button> 
+				<button data-send type='button'>SEND</button></div>
+			</div>
+			
+			`;
 		else
-			return `<div class="btns-step"><button data-previous type='button'>PREVIOUS</button> 
-        <button data-next type='button'>NEXT</button></div>`;
+			return `
+			<div class="btns-step">
+				<div class="btns-step"><button data-previous type='button'></button> 
+        		<button data-next type='button'>NASTĘPNY KROK</button></div>
+			</div>`;
 	}
 
     getAnswers(){

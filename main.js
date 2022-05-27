@@ -1,9 +1,6 @@
-const page = 8
-
+const page = 5
 let conditionalQuestions = employeeConditionalQuestions
 const role = sessionStorage.getItem("role")
-
-
 
 
 // Dla danych z Backendu
@@ -16,6 +13,7 @@ if(role == "menager"){
 	endpoint_questions = "http://127.0.0.1:8000/api/questionsmanager/?format=json"
 	conditionalQuestions = managerConditionalQuestions
 }
+
 
 fetch(endpoint_questions)
 	.then(blob => blob.json())
@@ -103,6 +101,8 @@ function parseData(data) {
 
 	return parseData
 }
+
+
 
 
 function showAnswers(){

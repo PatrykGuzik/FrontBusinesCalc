@@ -1,6 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;700&display=swap");
 body{
-    background-color: rgb(90, 150, 0);
     display: flex;
     align-items: center;
     flex-direction: column;
@@ -9,11 +8,11 @@ body{
     padding: 0;
     overflow-x: hidden;
     font-family: "Poppins", sans-serif;
-    background: linear-gradient(180deg, rgba(255,255,255,1) 0%, rgba(194,250,45,1) 100%);
+    background: #EEEEEE;
 }
 
 .container{
-    width: 500px;
+    width: 300px;
 }
 
 .box{
@@ -126,11 +125,11 @@ body{
 
 /* animacje */
 .card {
-	background-color: white;
-	width: 500px;
-	-webkit-box-shadow: 0px 0px 45px -7px rgba(66, 68, 90, 1);
+	background-color: rgba(255, 255, 255, 0);
+	width: 300px;
+	/* -webkit-box-shadow: 0px 0px 45px -7px rgba(66, 68, 90, 1);
 	-moz-box-shadow: 0px 0px 45px -7px rgba(66, 68, 90, 1);
-	box-shadow: 0px 0px 45px -7px rgba(66, 68, 90, 1);
+	box-shadow: 0px 0px 45px -7px rgba(66, 68, 90, 1); */
     border-radius: 5px;
     padding: 20px 0;
     display: flex;
@@ -160,22 +159,60 @@ body{
     position: relative;
 }
 
+.card .btns-step{
+    /* width: 190px; */
+    display: flex;
+    justify-content: space-between;
+}
+
 .card [data-next],
-.card [data-previous],
 .card [data-send]
  {
     color:white;
     border: none;
-    background-color: #4D8748;
-    padding: 5px 10px;
-    border-radius: 5px;
-    font-size: 17px;
+    margin: 0 10px;
+    background-color: #48166C;
+    padding: 13px 20px;
+    border-radius: 30px;
+    font-size: 12px;
 }
+
+.card [data-previous]{
+    display: inline-block;
+    margin: 0 10px;
+    width: 40px;
+    height: 40px;
+    background-color: white;
+    border-radius: 50%;
+    border: none;
+    z-index: 1;
+    position: relative;
+    position: relative;
+    transition: transform 0.3s;
+    mix-blend-mode: screen;
+}
+
+.card [data-previous]::after{
+    content: '';
+    position: absolute;
+    width: 15px;
+    height: 15px;
+    top: 50%;
+    left: 50%;
+    border-bottom: 2px solid #C5C5C5;
+    border-left: 2px solid #C5C5C5;
+    transform: translate(-30%, -50%) rotate(45deg);
+}
+
 
 
 
 .card button:hover{
     cursor: pointer;
+}
+
+.card h4{
+    color:#48166C;
 }
 
 /* send btn */
@@ -203,11 +240,10 @@ body{
 .progress-bar{
     width: 100%;
     height: 10px;
-    border-radius: 4px;
-   
+    border-radius: 10px;
     margin-bottom: 20px;
-    background: linear-gradient(90deg, rgb(255, 51, 0) 0%, rgb(242, 255, 0) 50%, rgb(126, 228, 1) 100%);
-    background-color: rgb(130, 130, 130);
+    background: linear-gradient(90deg, #17A8B5 0%,  #17A8B5 50%,  #17A8B5 100%);
+    background-color:  #F0D9E2;
     position: relative;
     overflow: hidden;
 }
@@ -216,13 +252,14 @@ body{
     right:0;
     width: 100%;
     height: 100%;   
-    background: rgb(110, 110, 110);
+    background:#F0D9E2;
     transition: all 0.3s;
 }
 
 /* category name */
 .category-name{
     margin-top: 150px;
+    margin-bottom: 20px;
     font-size: 20px;
     font-weight: 700;
     text-transform: uppercase;
@@ -239,3 +276,67 @@ body{
 
 
 /* Inputs */
+input[type="text"], input[type="number"] {
+    border: 2px solid #17A8B5;
+    background-color: white;
+    border-radius: 40px;
+    color: black;
+    width: 90px;
+    padding: 10px;
+    font-size: 12px;
+    font-weight: 200;
+    text-align: center;
+}
+
+.card .number-box{
+    display: flex;
+    align-items: center;
+}
+
+.card .number-box span{
+    margin-left: 10px;
+    font-size: 12px;
+}
+
+/* Range */
+
+.range {
+    -webkit-appearance: none;
+    width: 200px;
+    height: 8px;
+    background: linear-gradient(90deg, #17A8B5 50%, #A6D9DE 50%);
+    border-radius: 30px;
+    outline: none;
+    opacity: 0.7;
+    -webkit-transition: .2s;
+    transition: opacity .2s;
+    margin-bottom: 40px;
+  }
+  
+  .range:hover {
+    opacity: 1;
+  }
+  
+  .range::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    border-radius: 50%;
+    border: 7px solid   #DF4171;
+    width: 25px;
+    height: 25px;
+    background: #FFABC5;
+    cursor: pointer;
+  }
+  
+  .range::-moz-range-thumb {
+    border-radius: 50%;
+    width: 10px;
+    height: 10px;
+    background: #FFABC5;
+    cursor: pointer;
+  }
+
+.card p{
+    text-align: center;
+    color: #DF4171;
+}
