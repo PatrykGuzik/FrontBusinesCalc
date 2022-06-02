@@ -1,19 +1,44 @@
-@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;700&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800&family=Quicksand:wght@300;400;500;600;700&display=swap');
+
 body{
     display: flex;
     align-items: center;
     flex-direction: column;
+    /* justify-content: center; */
     height: 100vh;
     margin: 0;
     padding: 0;
     overflow-x: hidden;
-    font-family: "Poppins", sans-serif;
+    font-family: 'Quicksand', sans-serif;
     background: #EEEEEE;
+}
+
+/* obrazy w tle */
+[data-img]{
+    width: 30vw;
+    position: fixed;
+    z-index: -1;
+}
+
+[data-img="1"]{
+    top: 0;
+    left: 0;
+}
+[data-img="2"]{
+    bottom: 0;
+    right: 0;
 }
 
 .container{
     width: 300px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    opacity: 0;
+    transition: all 0.5s;
 }
+
+
 
 .box{
     width:100%;
@@ -38,34 +63,7 @@ body{
     flex-direction: column;
 }
 
-.progress{
-    width: 150px;
-    height: 10px;
-    background-color: rgb(75, 75, 75);
-    margin-bottom: 2px;
-}
-.progress .fill{
-    width: 0%;
-    height: 100%;
-    background-color: aqua;
-    transition: all 0.4s;
-}
 
-
-.hidden{
-    height: 0;
-    transform: rotateX(90deg);
-    
-}
-
-.btns{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-    margin-left: 20px;
-    margin-right: 20px;
-}
 
 .btns-step{
     display: flex;
@@ -73,38 +71,7 @@ body{
     justify-content: center;
 }
 
-[data-btn-up], [data-btn-down]{
-    background-color: transparent;
-    width: 15px;
-    height: 15px;
-    border: none;
-    border-top: 2px solid black;
-    border-left: 2px solid black;
-}
 
-[data-btn-up]{
-    transform:translateY(5px) rotate(45deg) ;
-}
-[data-btn-down]{
-    transform:translateY(-5px) rotate(-135deg);
-}
-
-[data-btn-up]:hover, [data-btn-down]:hover{
-    cursor: pointer;
-}
-
-
-
-[data-chb]{
-    transition: all 0.2s;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-/* [data-chk]:nth-child(2){
-    margin-bottom: 100px;
-} */
 
 [data-pr]{
     display: flex;
@@ -126,10 +93,7 @@ body{
 /* animacje */
 .card {
 	background-color: rgba(255, 255, 255, 0);
-	width: 300px;
-	/* -webkit-box-shadow: 0px 0px 45px -7px rgba(66, 68, 90, 1);
-	-moz-box-shadow: 0px 0px 45px -7px rgba(66, 68, 90, 1);
-	box-shadow: 0px 0px 45px -7px rgba(66, 68, 90, 1); */
+	width: 500px;
     border-radius: 5px;
     padding: 20px 0;
     display: flex;
@@ -213,11 +177,14 @@ body{
 
 .card h4{
     color:#48166C;
+    font-size: 22px;
+    text-align: center;
 }
 
 /* send btn */
 .send{
-    transform: translateY(400px);
+    position: fixed;
+    bottom: 0;
 }
 
 .is-not-validate-info{
@@ -258,7 +225,7 @@ body{
 
 /* category name */
 .category-name{
-    margin-top: 150px;
+    margin-top: 30vh;
     margin-bottom: 20px;
     font-size: 20px;
     font-weight: 700;
@@ -275,68 +242,3 @@ body{
 
 
 
-/* Inputs */
-input[type="text"], input[type="number"] {
-    border: 2px solid #17A8B5;
-    background-color: white;
-    border-radius: 40px;
-    color: black;
-    width: 90px;
-    padding: 10px;
-    font-size: 12px;
-    font-weight: 200;
-    text-align: center;
-}
-
-.card .number-box{
-    display: flex;
-    align-items: center;
-}
-
-.card .number-box span{
-    margin-left: 10px;
-    font-size: 12px;
-}
-
-/* Range */
-
-.range {
-    -webkit-appearance: none;
-    width: 200px;
-    height: 8px;
-    background: linear-gradient(90deg, #17A8B5 50%, #A6D9DE 50%);
-    border-radius: 30px;
-    outline: none;
-    opacity: 0.7;
-    -webkit-transition: .2s;
-    transition: opacity .2s;
-    margin-bottom: 40px;
-  }
-  
-  .range:hover {
-    opacity: 1;
-  }
-  
-  .range::-webkit-slider-thumb {
-    -webkit-appearance: none;
-    appearance: none;
-    border-radius: 50%;
-    border: 7px solid   #DF4171;
-    width: 25px;
-    height: 25px;
-    background: #FFABC5;
-    cursor: pointer;
-  }
-  
-  .range::-moz-range-thumb {
-    border-radius: 50%;
-    width: 10px;
-    height: 10px;
-    background: #FFABC5;
-    cursor: pointer;
-  }
-
-.card p{
-    text-align: center;
-    color: #DF4171;
-}

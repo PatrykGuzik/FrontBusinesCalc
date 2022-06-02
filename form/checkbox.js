@@ -39,9 +39,29 @@ class Checkbox extends Form{
 		const questionHTML = `<h4>${this.question}</h4>`;
 		let subquestionsHTML = "";
 		this.subquestions.forEach((subq, index) => {
-			subquestionsHTML += `<label><input data-ch="${
-				index + 1
-			}" type="checkbox"  name="${this.id}">${subq}</label>`;
+			subquestionsHTML += `
+			<div class="chb-con">
+
+				<label class="container-checkbox">
+					${subq}
+					<input data-ch="${index + 1}" type="checkbox"  name="${this.id}">
+					<span class="checkmark"></span>
+				</label>
+				
+				<div data-chb="${index + 1}" class="f-${this.id} hidden">
+					<div class="btns">
+						<button data-btn-up="${index + 1}"></button>
+						
+						<button data-btn-down="${index + 1}"></button>
+					</div>
+					<div data-nr="${index + 1}">0%</div>
+				</div>
+				
+			</div>
+
+			`
+			
+			;
 		});
 		const progressHTML = `
         <div data-pr=${this.id}>
@@ -49,7 +69,6 @@ class Checkbox extends Form{
             <div  class="progress">
                 <div class="fill"></div>
             </div>
-
         </div>
         `;
 
@@ -57,7 +76,6 @@ class Checkbox extends Form{
 		this.subquestions.forEach((subq, index) => {
 			checkedSub += `
             <div data-chb="${index + 1}" class="f-${this.id} hidden">
-                <div>${subq}</div> 
                 <div class="btns">
                     <button data-btn-up="${index + 1}"></button>
                     <div data-nr="${index + 1}">0%</div>
@@ -71,10 +89,10 @@ class Checkbox extends Form{
 
 		box.innerHTML = `
         ${questionHTML} 
-        <div class="sbq-${this.id}">${subquestionsHTML}</div>
-        ${progressHTML}
+		${progressHTML}
+        <div data-checkboxes data-chk class="chk-${this.id} sbq-${this.id}">${subquestionsHTML}</div>
+        
 		${validateInfo}
-        <div data-chk class="chk-${this.id}">${checkedSub}
 		${this.getButtonsHTML(parseInt(box.dataset.step-1))}`;
 	}
 

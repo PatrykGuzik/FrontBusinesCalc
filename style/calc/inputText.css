@@ -1,0 +1,50 @@
+.card .con-text input[type="text"], input[type="number"] {
+    border: 2px solid #17A8B5;
+    background-color: white;
+    border-radius: 40px;
+    color: black;
+    width: 100px;
+    padding: 10px;
+    font-size: 12px;
+    font-weight: 200;
+    text-align: center;
+}
+
+.card .con-text ::placeholder{
+    color:black; 
+    font-size: 11px;
+    font-weight: 600;
+}
+
+.card .number-box{
+    display: flex;
+    align-items: center;
+}
+
+.card .number-box span{
+    margin-left: 10px;
+    font-size: 12px;
+}
+
+.card [data-text]{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.card [data-text] .name{
+    color:black; 
+    font-size: 13px;
+    font-weight: 600;
+    margin-bottom: 3px;
+}
+
+.card .con-text{
+    margin-bottom: 20px;
+}
+
+.card .con-text span{
+    color:black; 
+    font-size: 13px;
+    font-weight: 600;
+}

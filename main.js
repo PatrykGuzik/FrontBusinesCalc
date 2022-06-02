@@ -1,4 +1,4 @@
-const page = 5
+const page = 0
 let conditionalQuestions = employeeConditionalQuestions
 const role = sessionStorage.getItem("role")
 
@@ -20,6 +20,8 @@ fetch(endpoint_questions)
 	.then(data => getQuestions(data));
 
 function getQuestions(data) {
+
+	hideLoading()
 	const sortData = data.sort((a,b)=>(a.number - b.number))
 
 	console.log(sortData);
@@ -107,4 +109,13 @@ function parseData(data) {
 
 function showAnswers(){
 	getValuesFromEndpoint(endpoint_values)
+}
+
+function hideLoading(){
+	const loading = document.querySelector(".loading-calc")
+	const container =  document.querySelector(".container")
+	setTimeout(() => {
+		loading.style.display = "none"
+		container.style.opacity = "1"
+	}, 100);
 }

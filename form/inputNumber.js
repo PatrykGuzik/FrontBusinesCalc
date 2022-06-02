@@ -32,19 +32,30 @@ class InputNumber extends Form {
 		let subquestionsHTML = "";
 		if (this.subquestions) {
 			this.subquestions.forEach((subq, index) => {
-				subquestionsHTML += `<p>${subq}</p> <label class="number-box"><input data-chb="${
-					index + 1
-				}" type="number" min="${this.min}" max="${this.max}"><span>${this.unit}</span></label>`;
+				subquestionsHTML += `
+				<div class="con-text">
+					<div class="name">${subq}</div> 
+						<label class="number-box"><input data-chb="${index + 1}" placeholder="Wpisz liczbę" type="number" min="${this.min}" max="${this.max}">
+						<span>${this.unit}</span>
+					</label>
+				</div>`;
 			});
 		} else {
-			subquestionsHTML += `<label class="number-box"><input data-chb type="number" placeholder="Wpisz liczbę" min="${this.min}" max="${this.max}"><span>${this.unit}</span></label>`;
+			subquestionsHTML += `
+			<div class="con-text">
+				<label class="number-box">
+					<input data-chb type="number" placeholder="Wpisz liczbę" min="${this.min}" max="${this.max}">
+					<span>${this.unit}</span>
+				</label>
+			</div>`;
+			
 		}
 
 		const validateInfo = `<p class="is-not-validate-info">uzupełnij wszystkie pola wartościami pomiędzy ${this.min} a ${this.max}</p>`
 
 		box.innerHTML = `
         ${questionHTML} 
-        <div class="sbq-${this.id}">${subquestionsHTML}</div>
+        <div data-text class="sbq-${this.id}">${subquestionsHTML}</div>
 		${validateInfo}
 		${this.getButtonsHTML(parseInt(box.dataset.step-1))}`;
 	}

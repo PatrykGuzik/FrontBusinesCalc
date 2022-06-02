@@ -31,9 +31,11 @@ class Radio extends Form{
 		const questionHTML = `<h4>${this.question}</h4>`;
 		let subquestionsHTML = "";
 		this.subquestions.forEach((subq, index) => {
-			subquestionsHTML += `<label><input data-ch="${
-				index + 1
-			}" type="radio"  name="${this.id}">${subq}</label>`;
+			subquestionsHTML += `
+			<label class="container-radio">${subq}
+				<input data-ch="${index + 1}" type="radio"  name="${this.id}"> 
+				<span class="checkmark"> </span> 
+			</label>`;
 		});
 
 		const validateInfo = `<p class="is-not-validate-info">zaznacz przynajmniej jedną odpowiedź</p>`
@@ -41,7 +43,7 @@ class Radio extends Form{
 
 		box.innerHTML = `
         ${questionHTML} 
-        <div class="sbq-${this.id}">${subquestionsHTML}</div>
+        <div data-radio class="sbq-${this.id}">${subquestionsHTML}</div>
 		${validateInfo}
 		${this.getButtonsHTML(parseInt(box.dataset.step-1))}`;
 	}

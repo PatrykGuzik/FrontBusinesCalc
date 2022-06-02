@@ -183,7 +183,6 @@ function calcEmployeeCarbonFootprint(data){
 
     let GENERAL_CO2 = Email_CO2 + Phone_CO2
 
-    console.log(GENERAL_CO2);
     // PRACA ZDALNA-------------------------------------------------------------
     // 6 Ile godzin dziennie pracujesz na:
     const useDevices = getMultiAnswerFromInputText(answers,6)
@@ -200,68 +199,135 @@ function calcEmployeeCarbonFootprint(data){
     if(workStyle == 2) remoteValue = nrDaysInOffice/5*222
     if(workStyle == 3) remoteValue = 222
 
-    let Laptop_CO2 = 0
-    let Comp_CO2 = 0
-    let Tablet_CO2 = 0
+    let Laptop_CO2 = useLaptop * getValueByName("E_PZ_laptop", data) * remoteValue / 5
+    let Comp_CO2 = useComp * getValueByName("E_PZ_comp", data) * remoteValue / 5
+    let Tablet_CO2 = useTablet * getValueByName("E_PZ_tablet", data) * remoteValue / 5
+    let Meetings_CO2 = timeOnMeetings * getValueByName("E_PZ_meet", data)
+    let Monitors_CO2 = nbMonitors * Laptop_CO2
+
+    // console.log("laptop ",Laptop_CO2);
+    // console.log("comp ",Comp_CO2);
+    // console.log("tablet ", Tablet_CO2);
+    // console.log("meet ", Meetings_CO2);
+    // console.log("monitors ", Monitors_CO2);
+
+    let REMOTE_CO2 = Laptop_CO2 + Comp_CO2 + Tablet_CO2 + Meetings_CO2 + Monitors_CO2
+
+    // console.log("praca zdalna:", REMOTE_CO2);
     
     
     // WODA I JEDZENIE-----------------------------------------------------------
     
-    // 8 Czy zamawiasz jedzenie do pracy?
+    // 8 Czy zamawiasz jedzenie do pracy? tak-1; nie-2
     const isFoodDelivery = getAnswerFromRadio(answers,9)
     // 9 Ile obiadów zamawiasz z dowozem do firmy średnio w ciągu tygodnia?
     const nrOfFoodDeliver = getAloneAnswerFromInputText(answers,10)
-    // 10 Czy obiady dowożone są zwykle samochodem czy rowerem?
+    // 10 Czy obiady dowożone są zwykle samochodem czy rowerem? car-1; bike-2; dont know-3
     const foodDeliveryStyle = getAnswerFromRadio(answers,11)
-    // 11 Jakiego rodzaju potrawy zamawiasz?
+    // 11 Jakiego rodzaju potrawy zamawiasz? meet-1; vege-2; 
     const foodStyle = getAnswerFromRadio(answers,12)
+
+    let FOOD_CO2 = 0
+
+    let typeFood = 0
+    let typeDeliv = 0
+    if (isFoodDelivery == 1){
+        if(foodStyle == 2) typeFood = getValueByName("E_F_del_veg", data)
+        else typeFood = getValueByName("E_F_del_meet", data)
+
+        if(foodDeliveryStyle == 1) typeDeliv = getValueByName("E_F_car", data)
+        else if (foodDeliveryStyle == 2) typeDeliv = getValueByName("E_F_bike", data)
+        else typeDeliv = getValueByName("E_F_dontknow", data)
+
+        FOOD_CO2 =  nrOfFoodDeliver*(typeFood+typeDeliv)*52
+    }
     
     // TRANSPORT-------------------------------------------------------------------
     
     // 12 W jaki sposób dostajesz się do pracy?
     const transportToWork = getAnswersFromCheckbox(answers,13)
-    const transCar = transportToWork[0]
-    const transBus = transportToWork[1]
-    const transTram = transportToWork[2]
-    const transBike = transportToWork[3]
-    const transFood = transportToWork[4]
-    const transTrain = transportToWork[5]
-    const transCarpooling = transportToWork[6]
-    const transMetro = transportToWork[7]
+    const transCar = transportToWork[0]* 0.01
+    const transBus = transportToWork[1]* 0.01
+    const transTram = transportToWork[2]* 0.01
+    const transBike = transportToWork[3]* 0.01
+    const transFoot = transportToWork[4]* 0.01
+    const transTrain = transportToWork[5]* 0.01
+    const transCarpooling = transportToWork[6]* 0.01
+    const transMetro = transportToWork[7]* 0.01
     // 13 Ile kilometrów przejeżdzasz do oraz z pracy?
-    const carKm = getAloneAnswerFromInputText(answers,14)
+    let carKm = getAloneAnswerFromInputText(answers,14)
     // 14 Jakim typem paliwa zasilany jest Twój samochód?   1-Diesel;  2-Benzyna;  3-EnergiaElektryczna; 4-NapędHybrydowy;  5-LPG 
     const carFuel = getAnswerFromRadio(answers,15)
     // 15 Ile litrów na 100 km statystycznie spala twój samochód?
-    const carFuelConsum = getAloneAnswerFromInputText(answers,16)
+    let carFuelConsum = getAloneAnswerFromInputText(answers,16)
     // 16 Z iloma osobami zwykle podróżujesz?
-    const nrPassengers = getAloneAnswerFromInputText(answers,17)
+    let nrPassengers = getAloneAnswerFromInputText(answers,17)
     // 17 Ile godzin lotów służbowych wykonałeś w ciągu roku?
     const flyHours = getAloneAnswerFromInputText(answers,18)
 
+    //DEV--------------
+    // carKm = 25        
+    // remoteValue = 222 
+    // carFuelConsum = 7 
+    // nrPassengers = 2
+
+    //-----------------
+
+    let typeFuel = 0
+
+    let car_co2 = 0
+    let bus_co2 = carKm * remoteValue * getValueByName("E_T_fuel_diesel", data) * 30 / 100 / 35 * transBus 
+    let tram_co2 = transTram * getValueByName("E_T_tram", data) * carKm * remoteValue * 0.698
+    let bike_co2 = 0
+    let foot_co2 = 0
+    let train_co2 = transTrain * getValueByName("E_T_train", data) * carKm * remoteValue * 0.698
+    let carpooling_co2 = 0
+    let metro_co2 = transMetro * getValueByName("E_T_metro", data) * carKm * remoteValue
+
+
+    if(transCar > 0 || transCarpooling > 0){
+        if (carFuel == 1) typeFuel = getValueByName("E_T_fuel_diesel", data)
+        if (carFuel == 2) typeFuel = getValueByName("E_T_fuel_gas", data)
+        if (carFuel == 3) typeFuel = getValueByName("E_T_fuel_elect", data)
+        if (carFuel == 4) typeFuel = getValueByName("E_T_fuel_hyb", data)
+        if (carFuel == 5) typeFuel = getValueByName("E_T_fuel_lpg", data)
+
+        car_co2 = carKm * remoteValue * transCar * typeFuel * carFuelConsum/100
+        carpooling_co2 = carKm * remoteValue * transCarpooling * carFuelConsum/100 * typeFuel / nrPassengers
+    }
+
+    const TRANSPORT_TO_WORK_CO2 = car_co2 + bus_co2 + tram_co2 + bike_co2 + foot_co2 + train_co2 + carpooling_co2 + metro_co2
+
+    // console.log(car_co2);
+    // console.log(bus_co2);
+    // console.log(tram_co2);
+    // console.log(bike_co2);
+    // console.log(foot_co2);
+    // console.log(train_co2);
+    // console.log(carpooling_co2);
+    // console.log(metro_co2);
+    // console.log(TRANSPORT_TO_WORK_CO2);
+
+    const FLY_CO2 = flyHours * 850 * getValueByName("E_T_fly", data)
+
+    console.log(FLY_CO2);
+
+    const TRANSPORT_CO2 = TRANSPORT_TO_WORK_CO2 + FLY_CO2
+
+    //SUMA
+    const SUM_EMPLOYEE_CO2 = GENERAL_CO2 + REMOTE_CO2 + FOOD_CO2 + TRANSPORT_CO2
+
+
+    console.log("ogólne: ",GENERAL_CO2);
+    console.log("praca zdalna: ",REMOTE_CO2);
+    console.log("jedzenie: ", FOOD_CO2);
+    console.log("transport: ",TRANSPORT_CO2);
+    console.log("suma: ", SUM_EMPLOYEE_CO2);
 
 
 
 
-    // console.log('workStyle', workStyle);
-    // console.log('nrDaysInOffice', nrDaysInOffice);
-    // console.log('isMail', isMail);
-    // console.log('mailForDay', mailForDay);
-    // console.log('ifPhone', ifPhone);
-    // console.log('phoneForDay', phoneForDay);
-    // console.log('useDevices', useDevices, "-","Laptop-", useLaptop,"Komputer-", useComp,"Tablet-", useTablet);
-    // console.log('timeOnMeetings', timeOnMeetings);
-    // console.log('nbMonitors', nbMonitors);
-    // console.log('isFoodDelivery', isFoodDelivery);
-    // console.log('nrOfFoodDeliver', nrOfFoodDeliver);
-    // console.log('foodDeliveryStyle', foodDeliveryStyle);
-    // console.log('foodStyle', foodStyle);
-    // console.log('transportToWork', transportToWork);
-    // console.log('carKm', carKm);
-    // console.log('carFuel', carFuel);
-    // console.log('carFuelConsum', carFuelConsum);
-    // console.log('nrPassengers', nrPassengers);
-    // console.log('flyHours', flyHours);
+    goToFinish(`${SUM_EMPLOYEE_CO2}`);
 }
 
 
@@ -318,5 +384,5 @@ function getValueByName(name, data) {
 
 function goToFinish(sum){
     sessionStorage.setItem("sum", sum)
-	// location.href = "finish.html";
+	location.href = "finish.html";
 }

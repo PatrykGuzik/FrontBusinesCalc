@@ -1,0 +1,48 @@
+.loading-calc {
+	position: fixed;
+	top: 40vh;
+}
+
+.loading-calc .l1 {
+	height: 140px;
+	width: 140px;
+  border-radius: 50%;
+	background-color: black;
+	position: relative;
+	overflow: hidden;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	background-color: transparent;
+	color: #48166C;
+}
+
+.loading-calc .l1::after{
+    content: '';
+    height: 120px;
+    width: 120px;
+    border-radius: 50%;
+    position: absolute;
+    background-color: #EEEEEE;
+  }
+
+.loading-calc .l1::before {
+    position: absolute;
+    content: '';
+    height: 200px;
+    width: 200px;
+    background-image: conic-gradient(#48166C 20deg, transparent 120deg);
+    animation: rotate 1.5s linear infinite;
+    transition: all 0.5s linear;
+  }
+
+  @keyframes rotate{
+    0% {
+        transform:rotate(0deg);
+    }
+    100% {
+        transform:rotate(-360deg);
+    }
+  }
+
+
