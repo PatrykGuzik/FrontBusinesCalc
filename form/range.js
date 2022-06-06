@@ -1,6 +1,6 @@
 class Range extends Form{
-	constructor(question,subquestions=null,category,id,min=0, max=1000, unit) {
-		super(question,subquestions,category,id)
+	constructor(question,subquestions=null,category,id,name,type,min=0, max=1000, unit) {
+		super(question,subquestions,category,id,name,type)
 		this.min = min;
 		this.max = max;
 		this.unit = unit;

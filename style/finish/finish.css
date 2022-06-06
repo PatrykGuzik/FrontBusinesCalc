@@ -13,22 +13,7 @@ body{
     background: #EEEEEE;
 }
 
-/* obrazy w tle */
-[data-img]{
-    width: 30vw;
-    position: fixed;
-    z-index: -1;
-}
-
-[data-img="1"]{
-    top: 0;
-    left: 0;
-}
-[data-img="2"]{
-    bottom: 0;
-    right: 0;
-}
 
 .container h1{
-    color: #48166C;
+    color: var(--main-color);
 }

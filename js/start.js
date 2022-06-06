@@ -1,5 +1,3 @@
-// data from database
-
 const endpoint = "http://127.0.0.1:8000/api/customers/?format=json";
 
 fetch(endpoint)
@@ -21,35 +19,20 @@ function checkCode(data) {
 	const code = myUrl.searchParams.get("code");
 	const customerName = document.querySelector(".customer-name");
 	const mainCustomerText = document.querySelector("#main-customer-text");
+	sessionStorage.setItem("code", code)
 
 
 	if (code && getCoName(code)) {
         customerName.innerHTML = getCoName(code)
 	}else{
 	    console.log("nie wybrano firmy")
-        mainCustomerText.innerHTML = "Oblicz jaki wpływ na środowisko ma Twoja praca"
+        mainCustomerText.innerHTML = ""
         customerName.innerHTML = ""
         
 	}
 
 	goToCalc()
 }
-
-
-
-// Local data
-// const myUrl = new URL(window.location.href);
-// const code = myUrl.searchParams.get("code");
-// const customerName = document.querySelector(".customer-name");
-// const mainCustomerText = document.querySelector("#main-customer-text");
-// if (code && getCoName(code)) {
-// 	customerName.innerHTML = getCoName(code)
-// }else{
-// 	console.log("nie wybrano firmy")
-// 	mainCustomerText.innerHTML = "Oblicz jaki wpływ na środowisko ma Twoja praca"
-// 	customerName.innerHTML = ""
-// }
-// goToCalc()
 
 
 
@@ -67,7 +50,6 @@ function goToCalc() {
 				sessionStorage.setItem("role", "menager")
 			}
 			location.href = "calc.html";
-			
 		})
 	});
 	

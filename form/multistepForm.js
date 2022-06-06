@@ -17,7 +17,7 @@ class MultistepForm {
 	changePage() {
 		this.clickBtnsEvents();
 		this.showCurrentStep();
-		this.drawCategoryName(0);
+		// this.drawCategoryName(0);
 	}
 
 	setCurrentStep(currentStep){
@@ -106,7 +106,7 @@ class MultistepForm {
 	drawCategoryName(nextQuestion) {
 		const categoryName = document.querySelector(".category-name");
 		const currentCategory = categoryName.innerHTML;
-		const nextCategory = Form.getCategoryName(nextQuestion); // Question.getCategoryName(nextQuestion).category
+		const nextCategory = Form.getCategoryName(nextQuestion);
 
 		if (!nextCategory) {
 			return;

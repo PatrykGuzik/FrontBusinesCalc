@@ -1,163 +1,177 @@
-[data-checkboxes]{
-    display: flex;
-    flex-direction: column;
+[data-checkboxes] {
+	display: flex;
+	flex-direction: column;
 }
 
-.progress{
-    width: 150px;
-    height: 10px;
-    background-color: #F0D9E2;
-    margin-bottom: 2px;
-    border-radius: 10px;
-    overflow: hidden;
-    margin-bottom: 30px;
+.progress {
+	width: 150px;
+	height: 10px;
+	background-color: #f0d9e2;
+	margin-bottom: 2px;
+	border-radius: 10px;
+	overflow: hidden;
+	margin-bottom: 5px;
 }
-.progress .fill{
-    width: 0%;
-    height: 100%;
-    background-color: #17A8B5;
-    transition: all 0.4s;
-
-}
-
-
-
-.chb-con{
-    display: flex;
-    align-items: center;
-    width: 160px;
-    height: 30px;
-    margin-bottom: 10px;
+.progress .fill {
+	width: 0%;
+	height: 100%;
+	background-color: #17a8b5;
+	transition: all 0.4s;
 }
 
-[data-chb]{
-    transition: all 0.2s;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+.chb-con {
+	display: flex;
+	align-items: center;
+	width: 160px;
+	height: 30px;
+	margin-bottom: 10px;
 }
 
-[data-checkboxes]{
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    background-color: rgba(183, 183, 183, 0);
-    width: 400px;
-    height: 200px;
+[data-chb] {
+	transition: all 0.2s;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+[data-checkboxes] {
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	justify-content: space-between;
+	background-color: rgba(183, 183, 183, 0);
+	font-size: 21px;
+	width: 400px;
+	height: 200px;
 }
 
 /* BUTTONS */
 
-.chb-con .hidden{
-    /* height: 0; */
-    transform: rotateX(90deg);
+.chb-con .hidden {
+	transform: rotateX(90deg);
 }
 
-.chb-con{
-    font-weight: 700;
-    font-size: 14px;
+.chb-con {
+	font-weight: 700;
+	font-size: 1em;
 }
 
-.chb-con .btns{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-    margin-left: 12px;
-    margin-right: 12px;
+.chb-con .btns {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-direction: column;
+	margin-left: 0.7em;
+	margin-right: 0.7em;
 }
 
-
-[data-btn-up], [data-btn-down]{
-    background-color: transparent;
-    width: 13px;
-    height: 13px;
-    border: none;
-    border-top: 2px solid #17A8B5;
-    border-left: 2px solid #17A8B5;
+[data-btn-up],
+[data-btn-down] {
+	background-color: transparent;
+	width: 0.7em;
+	height: 1em;
+	border: none;
+	border-top: 2px solid #17a8b5;
+	border-left: 2px solid #17a8b5;
 }
 
-[data-btn-up]{
-    transform:translateY(2px) rotate(45deg) ;
+[data-btn-up] {
+	transform: translateY(2px) rotate(45deg);
 }
-[data-btn-down]{
-    transform:translateY(-2px) rotate(-135deg);
-}
-
-[data-btn-up]:hover, [data-btn-down]:hover{
-    cursor: pointer;
+[data-btn-down] {
+	transform: translateY(-2px) rotate(-135deg);
 }
 
-
-
-
+[data-btn-up]:hover,
+[data-btn-down]:hover {
+	cursor: pointer;
+}
+[data-nr] {
+	font-size: 0.7em;
+}
 
 /* CHECKBOX */
 
 /* The container */
 .container-checkbox {
-    font-weight: 700;
-    display: block;
-    position: relative;
-    padding-left: 29px;
-    cursor: pointer;
-    font-size: 12px;
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
-  }
-  
-  /* Hide the browser's default checkbox */
-  .container-checkbox input {
-    position: absolute;
-    opacity: 0;
-    cursor: pointer;
-    height: 0;
-    width: 0;
-  }
-  
-  /* Create a custom checkbox */
-  .container-checkbox .checkmark {
-    position: absolute;
-    top: -2px;
-    left: 0;
-    height: 16px;
-    width: 16px;
-    background-color: white;
-    border-radius: 4px;
-    border: 2px solid #17A8B5;
-  }
-  
-  
-  /* When the checkbox is checked, add a blue background */
-  .container-checkbox input:checked ~ .checkmark {
-    background-color:  #17A8B5;
+	font-weight: 700;
+	display: block;
+	position: relative;
+	padding-left: 29px;
+	cursor: pointer;
+	font-size: 0.6em;
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+}
 
-  }
-  
-  /* Create the checkmark/indicator (hidden when not checked) */
-  .container-checkbox .checkmark:after {
-    content: "";
-    position: absolute;
-    display: none;
-  }
-  
-  /* Show the checkmark when checked */
-  .container-checkbox input:checked ~ .checkmark:after {
-    display: block;
-  }
-  
-  /* Style the checkmark/indicator */
-  .container-checkbox .checkmark:after {
-    left: 4px;
-    top: 0px;
-    width: 5px;
-    height: 9px;
-    border: solid white;
-    border-width: 0 3px 3px 0;
-    -webkit-transform: rotate(45deg);
-    -ms-transform: rotate(45deg);
-    transform: rotate(45deg);
-  }
+/* Hide the browser's default checkbox */
+.container-checkbox input {
+	position: absolute;
+	opacity: 0;
+	cursor: pointer;
+	height: 0;
+	width: 0;
+}
+
+/* Create a custom checkbox */
+.container-checkbox .checkmark {
+	position: absolute;
+	top: -2px;
+	left: 0;
+	height: 1.35em;
+	width: 1.35em;
+	background-color: white;
+	border-radius: 4px;
+	border: 2px solid #17a8b5;
+}
+
+/* When the checkbox is checked, add a blue background */
+.container-checkbox input:checked ~ .checkmark {
+	background-color: #17a8b5;
+}
+
+/* Create the checkmark/indicator (hidden when not checked) */
+.container-checkbox .checkmark:after {
+	content: "";
+	position: absolute;
+	display: none;
+}
+
+/* Show the checkmark when checked */
+.container-checkbox input:checked ~ .checkmark:after {
+	display: block;
+}
+
+/* Style the checkmark/indicator */
+.container-checkbox .checkmark:after {
+	left: 0.35em;
+	top: 0;
+	width: 0.4em;
+	height: 0.8em;
+	border: solid white;
+	border-width: 0 3px 3px 0;
+	-webkit-transform: rotate(45deg);
+	-ms-transform: rotate(45deg);
+	transform: rotate(45deg);
+}
+
+@media (min-width: 0px) and (max-width: 576px) {
+	[data-checkboxes] {
+		flex-direction: column;
+		align-items: center;
+		font-size: 25px;
+		width: 90vw;
+		height: 400px;
+		margin-bottom: 20px;
+	}
+
+	[data-btn-up],
+	[data-btn-down] {
+		width: 1.3em;
+		height: 1.3em;
+		border-top: 2px solid #17a8b5;
+		border-left: 2px solid #17a8b5;
+	}
+}

@@ -31,9 +31,9 @@
     content: '';
     height: 200px;
     width: 200px;
-    background-image: conic-gradient(#48166C 20deg, transparent 120deg);
-    animation: rotate 1.5s linear infinite;
-    transition: all 0.5s linear;
+    background-image: conic-gradient(#48166C 20deg, transparent 230deg);
+    animation: rotate 1.1s linear infinite;
+    transition: all 0.1s linear;
   }
 
   @keyframes rotate{

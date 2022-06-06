@@ -1,0 +1,24 @@
+body{
+    background-color: #EEEEEE;
+}
+
+table{
+    margin-bottom: 30px;
+}
+
+table, tr, td{
+    border: 1px solid rgb(145, 145, 145);
+    border-collapse: collapse;
+}
+
+table tr td{
+    padding: 5px;
+}
+
+table tr:hover{
+    background-color: #e6ecdd;
+}
+
+table tr:first-child{
+    background-color: rgb(209, 209, 209);
+}

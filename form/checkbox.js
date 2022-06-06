@@ -1,6 +1,6 @@
 class Checkbox extends Form{
-	constructor(question, subquestions,category, id) {
-		super(question,subquestions,category,id)
+	constructor(question, subquestions,category, id, name,type) {
+		super(question,subquestions,category,id,name,type)
 		this.answers = [];
 		this.checked = [];
 		this.sumValues = 0;
@@ -90,9 +90,10 @@ class Checkbox extends Form{
 		box.innerHTML = `
         ${questionHTML} 
 		${progressHTML}
+		${validateInfo}
         <div data-checkboxes data-chk class="chk-${this.id} sbq-${this.id}">${subquestionsHTML}</div>
         
-		${validateInfo}
+		
 		${this.getButtonsHTML(parseInt(box.dataset.step-1))}`;
 	}
 

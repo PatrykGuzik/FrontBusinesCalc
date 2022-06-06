@@ -5,14 +5,14 @@
     color: black;
     width: 100px;
     padding: 10px;
-    font-size: 12px;
+    font-size: 0.7rem;
     font-weight: 200;
     text-align: center;
 }
 
 .card .con-text ::placeholder{
     color:black; 
-    font-size: 11px;
+    font-size: 0.6rem;
     font-weight: 600;
 }
 
@@ -40,7 +40,7 @@
 }
 
 .card .con-text{
-    margin-bottom: 20px;
+    margin-bottom: 10px;
 }
 
 .card .con-text span{

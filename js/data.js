@@ -17,3 +17,5 @@ const managerConditionalQuestions = [
 	{ indexQuestion: 4, type: "radio", ifIsChecked: 1, hide: [5] },
 ];
 
+let rawDataToSend=[]
+let calcDataToSend=[]

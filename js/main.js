@@ -3,10 +3,8 @@ let conditionalQuestions = employeeConditionalQuestions
 const role = sessionStorage.getItem("role")
 
 
-// Dla danych z Backendu
 let endpoint_questions = "http://127.0.0.1:8000/api/questions/?format=json";
 const endpoint_values = "http://127.0.0.1:8000/api/values/?format=json"; 
-
 
 
 if(role == "menager"){
@@ -24,30 +22,24 @@ function getQuestions(data) {
 	hideLoading()
 	const sortData = data.sort((a,b)=>(a.number - b.number))
 
-	console.log(sortData);
 	const parseData = sortData.map(d => {
 		sbq = d.subquestions.split(';')
 		if (sbq[0] === '') sbq=null;
-		return {type: d.type, question: d.question, subquestions: sbq, min: d.min, max: d.max, unit: d.unit}
+		return {type: d.type, category: d.category, question: d.question, subquestions: sbq, min: d.min, max: d.max, unit: d.unit, name: d.name}
 	})
 	
 
 	generateForm(parseData, conditionalQuestions);
+
+	console.log(Form.questions);
+	
+	console.log(Form.questions.map(a=>{
+		return {category:a.category, name:a.name ,answers:a.answers, type: a.type}
+	} ));
+	
 }
 
 
-
-
-
-
-//dla danych lokalnych ---------------------------------------------
-
-// let data = parseData(managerData)
-// if(role == "employee"){
-// 	data = parseData(employeeData)
-// 	conditionalQuestions = employeeConditionalQuestions
-// }
-// generateForm(data, managerConditionalQuestions);
 
 
 
@@ -65,8 +57,6 @@ function getValues(data) {
 		calcManagerCarbonFootprint(data)
 	}
 }
-
-
 
 function generateForm(data, conditionalQuestions) {
 	Form.conditionalQuestions = conditionalQuestions;
@@ -117,5 +107,5 @@ function hideLoading(){
 	setTimeout(() => {
 		loading.style.display = "none"
 		container.style.opacity = "1"
-	}, 100);
+	}, 1000);
 }

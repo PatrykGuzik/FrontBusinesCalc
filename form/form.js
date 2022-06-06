@@ -4,11 +4,13 @@ class Form{
 	static nbOfQuestions = 0
 	static conditionalQuestions = []
 
-    constructor(question, subquestions = null, category, id) {
+    constructor(question, subquestions = null, category, id, name, type) {
 		this.question = question;
 		this.subquestions = subquestions;
 		this.category = category;
 		this.id = id;
+		this.name = name;
+		this.type = type;
 		this.answers = [];
 	}
 
@@ -16,16 +18,16 @@ class Form{
 		jsonData.forEach((element, index) => {
 			switch (element.type) {
 				case "radio":
-					new Radio(element.question, element.subquestions, element.category, `card${index+1}`).createInput()
+					new Radio(element.question, element.subquestions, element.category, `card${index+1}`, element.name, element.type).createInput()
 					break;
 				case "input":
-					new InputNumber(element.question, element.subquestions, element.category, `card${index+1}`, element.min, element.max, element.unit).createInput()
+					new InputNumber(element.question, element.subquestions, element.category, `card${index+1}`,element.name, element.type, element.min, element.max, element.unit).createInput()
 					break;
 				case "checkbox":
-					new Checkbox(element.question, element.subquestions, element.category, `card${index+1}`).createInput()
+					new Checkbox(element.question, element.subquestions, element.category, `card${index+1}`,element.name, element.type).createInput()
 					break;
 				case "range":
-					new Range(element.question, element.subquestions, element.category, `card${index+1}`, element.min, element.max, element.unit).createInput()
+					new Range(element.question, element.subquestions, element.category, `card${index+1}`,element.name, element.type, element.min, element.max, element.unit).createInput()
 					break;
 				default:
 					break;
