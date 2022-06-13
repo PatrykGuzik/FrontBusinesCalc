@@ -7,6 +7,13 @@ fetch("http://127.0.0.1:8000/api/customers/?format=json")
 	.then(data => getCustomers(data));
 
 function getQuestions(data) {
+	const tables = document.querySelector(".tables")
+	const loadingTables = document.querySelector(".loading-tables")
+
+	setTimeout(() => {
+		tables.style.display = "block"
+		loadingTables.style.display = "none"
+	}, 1000);
 
 
 	let dataManager = data.filter(d => d.role == "menager");
@@ -32,9 +39,15 @@ function getQuestions(data) {
 		dataEmployee = data.filter(d => d.role == "employee");
 
 		const code = e.target.dataset.code;
+		if(code == "all"){
+			dataManager = data.filter(d => d.role == "menager");
+			dataEmployee = data.filter(d => d.role == "employee");
+		}else{
+			dataEmployee = dataEmployee.filter(d => d.customer == code);
+			dataManager = dataManager.filter(d => d.customer == code);
+		}
 
-		dataEmployee = dataEmployee.filter(d => d.customer == code);
-		dataManager = dataManager.filter(d => d.customer == code);
+		
 
 		drawTabs();
 	});
@@ -84,6 +97,15 @@ function getQuestions(data) {
 
 // pokazuje wszystkich klientów
 function getCustomers(data) {
+	const customers = document.querySelector(".customers");
+	const loadingCustomers = document.querySelector(".loading-customers");
+
+	
+	setTimeout(() => {
+		customers.style.display = "flex"
+		loadingCustomers.style.display = "none"
+	}, 1000);
+
 	drawCustomerList(data)
 
 
@@ -96,13 +118,18 @@ function getCustomers(data) {
 
 
 	// zmiana nazwy klienta
-	const customers = document.querySelector(".customers");
 	customers.addEventListener("click", e => {
 		if(!e.target.dataset.code) return
-		const code = e.target.dataset.code
+		if(e.target.dataset.code == "all"){
+			document.querySelector('.customer-name').innerHTML = "Wszystkie"
+		}else{
+			const code = e.target.dataset.code
 
-		const name = data.find(d => d.code == code).name
-		document.querySelector('.customer-name').innerHTML = name
+			const name = data.find(d => d.code == code).name
+			const info = data.find(d => d.code == code).info
+			document.querySelector('.customer-name').innerHTML = name
+			document.querySelector('.customer-info').innerHTML = info
+		}
 	})
 
 }
@@ -114,7 +141,7 @@ function isInString(string, part){
 
 function drawCustomerList(data) {
 		const customersBox = document.querySelector(".customers");
-		let customersList = "";
+		let customersList = `<div><img data-code="all" width="30px" src="img/home.svg" alt="homepage"></div>`;
 		data.forEach(d => {
 			customersList += `<div data-code="${d.code}">${d.name}</div>`;
 		});

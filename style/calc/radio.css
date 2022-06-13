@@ -50,10 +50,39 @@
 	position: absolute;
 	display: none;
 }
+.card .container-radio .checkmark:before {
+	content: "";
+	position: absolute;
+	opacity: 0;
+	top: 0.25em;
+	left: 0.25em;
+	width: 0.5em;
+	height: 0.5em;
+	border-radius: 50%;
+	background: #17a8b538;
+	/* border: 1px solid #17a8b5; */
+}
 
 /* Show the indicator (dot/circle) when checked */
 .card .container-radio input:checked ~ .checkmark:after {
 	display: block;
+}
+
+.card .container-radio input:checked ~ .checkmark:before {
+	opacity: 1;
+	animation-name: a;
+	animation-duration: 0.15s;
+}
+
+@keyframes a {
+	0% {
+		opacity: 1;
+		transform: scale(0);
+	}
+	100% {
+		opacity: 1;
+		transform: scale(4);
+	}
 }
 
 /* Style the indicator (dot/circle) */
@@ -68,7 +97,6 @@
 
 @media (min-width: 0px) and (max-width: 576px) {
 	.card [data-radio] {
-		
 		flex-direction: column;
 		align-items: center;
 	}

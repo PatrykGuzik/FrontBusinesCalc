@@ -44,7 +44,11 @@ body{
     margin: 20px;
     width: 200px;
 }
-
+[data-img="4"]{
+    width: 150px;
+    bottom: 12px;
+    left: 250px;
+}
 
 
 

@@ -109,7 +109,14 @@
     padding: 13px 20px;
     border-radius: 30px;
     font-size: 0.6rem;
+    transition:all 0.3s
 }
+
+.card [data-next]:hover,
+.card [data-send]:hover
+ {
+    background-color: #603082;
+ }
 
 .card [data-previous]{
     display: inline-block;
@@ -135,7 +142,13 @@
     left: 50%;
     border-bottom: 2px solid #C5C5C5;
     border-left: 2px solid #C5C5C5;
-    transform: translate(-30%, -50%) rotate(45deg);
+    transform: translate(-30%, -50%) scaleY(0.9) rotate(45deg);
+    transition:all 0.3s;
+}
+.card [data-previous]:hover::after{
+    transform: translate(-30%, -50%) scaleY(1.1) rotate(45deg) ;
+    border-bottom: 2px solid #60308288;
+    border-left: 2px solid #60308288;
 }
 
 
