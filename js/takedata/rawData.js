@@ -70,26 +70,26 @@ function drawTableRaw(data, table, role) {
 			rows.forEach(row => {
 				switch (row.type) {
 					case "input":
-						if(!Array.isArray(row.answers)) headerTable += `<td>${row.name}</td>`;
+						if(!Array.isArray(row.answers)) headerTable += `<td data-name="${row.name}" data-type="${row.type}">${row.name}</td>`;
 						else{
 							temp = ""
 							row.answers.forEach(ans => {
-								temp += `<td>${row.name}${ans.subquestion}</td>`
+								temp += `<td data-name="${row.name}" data-sub="${ans.subquestion}" data-type="${row.type}">${row.name}${ans.subquestion}</td>`
 							});
 							headerTable += `${temp}`
 						}
 						break;
+
 					case "checkbox":
 						temp = ""
 						row.answers.forEach(ans => {
-							temp += `<td>${row.name}${ans.subquestion}</td>`
+							temp += `<td data-name="${row.name}" data-sub="${ans.subquestion}" data-type="${row.type}">${row.name}${ans.subquestion}</td>`
 						});
 						headerTable += `${temp}`
 						break;
-
 				
 					default:
-						headerTable += `<td>${row.name}</td>`;
+						headerTable += `<td data-name="${row.name}" data-type="${row.type}">${row.name}</td>`;
 						break;
 				}
 

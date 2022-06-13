@@ -7,6 +7,8 @@ fetch("http://127.0.0.1:8000/api/customers/?format=json")
 	.then(data => getCustomers(data));
 
 function getQuestions(data) {
+
+
 	let dataManager = data.filter(d => d.role == "menager");
 	let dataEmployee = data.filter(d => d.role == "employee");
 
@@ -75,6 +77,9 @@ function getQuestions(data) {
 			dataTypeName.innerHTML = "dane przeliczone";
 		}
 	}
+
+
+	showQuestionInfo(dataManager, dataEmployee)
 }
 
 // pokazuje wszystkich klientów

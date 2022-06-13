@@ -11,8 +11,9 @@
 
 <body>
     <nav>
-        <div class="input-box"><input class="search-input" type="text"><button><img src="img/search.svg" alt=""></button></div>
-        
+        <div class="input-box"><input class="search-input" type="text"><button><img src="img/search.svg"
+                    alt=""></button></div>
+
         <div class="customers"></div>
     </nav>
 
@@ -26,24 +27,36 @@
             <button data-data-type>zmień typ danych</button>
         </div>
 
-        
+
     </div>
 
-    <div class="table-header-name">
-        <p>Menager:</p>
-        <button data-download-btn class="download-button-manager"><img src="img/export-csv.png" alt=""></button>
+    <div class="tables">
+        <div class="table-header-name">
+            <p>Menager:</p>
+            <button data-download-btn class="download-button-manager"><img src="img/export-csv.png" alt=""></button>
+        </div>
+
+        <table data-manager>
+        </table>
+
+        <div class="table-header-name">
+            <p>Pracownik:</p>
+            <button data-download-btn class="download-button-employee"><img src="img/export-csv.png" alt=""></button>
+        </div>
+
+        <table data-employee>
+        </table>
     </div>
 
-    <table data-manager>
-    </table>
-
-    <div class="table-header-name">
-        <p>Pracownik:</p>
-        <button data-download-btn class="download-button-employee"><img src="img/export-csv.png" alt=""></button>
+    <div class="info-box">
+        <div class="header">
+            <img src="img/infio_icon.svg" alt="">
+            <div class="name"></div>
+        </div>
+        <div class="content"></div>
     </div>
 
-    <table data-employee>
-    </table>
+
 
     <script src="js/takedata/helpers.js"></script>
     <script src="js/takedata/calcData.js"></script>
