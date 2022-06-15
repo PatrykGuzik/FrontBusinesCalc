@@ -4,8 +4,6 @@ body{
     justify-content: center;
 }
 
-
-
 .customer-info{
     text-align: center;
 }
@@ -80,7 +78,7 @@ body{
 .loading-calc .l1 {
 	height: 140px;
 	width: 140px;
-  border-radius: 50%;
+    border-radius: 50%;
 	background-color: black;
 	position: relative;
 	overflow: hidden;

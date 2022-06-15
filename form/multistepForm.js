@@ -82,12 +82,7 @@ class MultistepForm {
 	}
 
 	goToFinish() {
-		console.log(Form.questions);
-
-		// tymczasowe - funkcja przypisana do przycisku: wyślij
 		showAnswers();
-		// sessionStorage.setItem("sum", Form.sum_co2)
-		// location.href = "finish.html";
 	}
 
 	// progress bar

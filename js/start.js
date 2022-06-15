@@ -1,7 +1,5 @@
 const endpoint = `${serv}/api/customers/?format=json`;
 
-
-
 fetch(endpoint, {
 	headers: {
 		Authorization: apiKey,
@@ -13,7 +11,6 @@ fetch(endpoint, {
 
 function checkCode(data) {
 	hideLoading()
-
 
 	const companies = data;
 

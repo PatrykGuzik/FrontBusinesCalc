@@ -51,8 +51,6 @@ body{
 }
 
 
-
-
 @media (min-width: 0px) and (max-width: 576px) {
     :root{
         --form-width: 90vw;
