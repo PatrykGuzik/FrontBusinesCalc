@@ -544,6 +544,7 @@ function getValueByName(name, data) {
 }
 
 function goToFinish(sum, calcAnswers) {
+	showLoadind()
 	sessionStorage.setItem("sum", sum);
 	sendToBase(calcAnswers);
 	location.href = "finish.html";

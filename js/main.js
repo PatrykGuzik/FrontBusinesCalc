@@ -116,3 +116,11 @@ function hideLoading() {
 		container.style.opacity = "1";
 	}, 0);
 }
+
+function showLoadind(){
+	const loading = document.querySelector(".loading-calc");
+	const container = document.querySelector(".container");
+	loading.style.display = "flex";
+	container.style.opacity = "0";
+}
+
