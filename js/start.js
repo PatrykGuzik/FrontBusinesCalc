@@ -1,8 +1,18 @@
 const endpoint = "http://127.0.0.1:8000/api/customers/?format=json";
 
-fetch(endpoint)
-	.then(blob => blob.json())
+
+
+fetch(endpoint, {
+	headers: {
+		Authorization: apiKey,
+	},
+})
+	.then(response => response.json())
 	.then(data => checkCode(data));
+
+// fetch(endpoint)
+// 	.then(blob => blob.json())
+// 	.then(data => checkCode(data));
 
 function checkCode(data) {
 	console.log(data);

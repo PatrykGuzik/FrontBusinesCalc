@@ -1,10 +1,10 @@
 function drawTableCalc(data, table, role) {
     const tableCalc = table
 
-	let headerTable = `${getHeader(["lp", "kod", "data"])}`;
+	let headerTable = `${getHeader(["lp", "kod", "data", "czas"])}`;
 	let bodyTable = "";
 
-    let headerCSV = `${getHeaderCSV(["lp", "kod", "data"])}`;
+    let headerCSV = `${getHeaderCSV(["lp", "kod", "data", "czas"])}`;
 
     let bodyCSV = ''
     
@@ -13,9 +13,10 @@ function drawTableCalc(data, table, role) {
 		const rows = JSON.parse(d.calc_answers);
 		const customer = d.customer;
 		const date = d.date;
+		const time = d.time
 
-		calcCell = `${getHeader([index + 1, customer, date])}`;
-        calcCellCSV = `${getHeaderCSV([index + 1, customer, date])}`;
+		calcCell = `${getHeader([index + 1, customer, date, time])}`;
+        calcCellCSV = `${getHeaderCSV([index + 1, customer, date, time])}`;
 
 		rows.forEach((row,index) => {
 			calcCell += `<td>${row.co2}</td>`;

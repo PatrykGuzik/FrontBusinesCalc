@@ -3,18 +3,26 @@ let conditionalQuestions = employeeConditionalQuestions
 const role = sessionStorage.getItem("role")
 
 
-let endpoint_questions = "http://127.0.0.1:8000/api/questions/?format=json";
-const endpoint_values = "http://127.0.0.1:8000/api/values/?format=json"; 
+let endpoint_questions = `${serv}/api/questions/?format=json`;
+const endpoint_values = `${serv}/api/values/?format=json`; 
 
 
 if(role == "menager"){
-	endpoint_questions = "http://127.0.0.1:8000/api/questionsmanager/?format=json"
+	endpoint_questions = `${serv}/api/questionsmanager/?format=json`
 	conditionalQuestions = managerConditionalQuestions
 }
 
 
-fetch(endpoint_questions)
-	.then(blob => blob.json())
+// fetch(endpoint_questions)
+// 	.then(blob => blob.json())
+// 	.then(data => getQuestions(data));
+
+fetch(endpoint_questions, {
+	headers: {
+		Authorization: apiKey,
+	},
+})
+	.then(response => response.json())
 	.then(data => getQuestions(data));
 
 function getQuestions(data) {
@@ -45,9 +53,17 @@ function getQuestions(data) {
 
 // funkcje pomocnicze -------------------------------------------------------------------------------------
 function getValuesFromEndpoint(endpoint){
-	fetch(endpoint)
-	.then(blob => blob.json())
-	.then(data => getValues(data));
+	// fetch(endpoint)
+	// .then(blob => blob.json())
+	// .then(data => getValues(data));
+
+	fetch(endpoint, {
+		headers: {
+			Authorization: apiKey,
+		},
+	})
+		.then(response => response.json())
+		.then(data => getValues(data));
 }
 
 function getValues(data) {

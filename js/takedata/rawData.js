@@ -2,10 +2,10 @@ function drawTableRaw(data, table, role) {
 	// const tableManager = document.querySelector("[data-manager]");
     const tableRaw = table
 
-	let headerTable = `${getHeader(["lp", "kod", "data"])}`;
+	let headerTable = `${getHeader(["lp", "kod", "data", "czas"])}`;
 	let bodyTable = "";
 
-    let headerCSV = `${getHeaderCSV(["lp", "kod", "data"])}`;
+    let headerCSV = `${getHeaderCSV(["lp", "kod", "data", "czas"])}`;
 
     let bodyCSV = ''
     
@@ -15,13 +15,12 @@ function drawTableRaw(data, table, role) {
 		const rows = JSON.parse(d.raw_answers);
 		const customer = d.customer;
 		const date = d.date;
+		const time = d.time
 
-		calcCell = `${getHeader([index + 1, customer, date])}`;
-        calcCellCSV = `${getHeaderCSV([index + 1, customer, date])}`;
+		calcCell = `${getHeader([index + 1, customer, date, time])}`;
+        calcCellCSV = `${getHeaderCSV([index + 1, customer, date, time])}`;
 
 		// CSV
-		
-
 		rows.forEach((row,index) => {
 			let sp = ','
         	if(index == rows.length-1) sp = "\n"

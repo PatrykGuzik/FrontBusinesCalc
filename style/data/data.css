@@ -1,5 +1,10 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800&family=Quicksand:wght@300;400;500;600;700&display=swap");
 
+/* MAIN COLOR #009879 */
+:root {
+	--main-color: #009879;;
+}
+
 body {
 	background-color: #efefef;
 	font-family: "Poppins", sans-serif;
@@ -31,7 +36,7 @@ table tr:nth-child(even) {
 	background-color: #ffffff;
 }
 table tr:nth-child(odd) {
-	color: #009879;
+	color: var(--main-color);
 }
 
 table td:first-child {
@@ -59,7 +64,7 @@ table tr td {
 } */
 
 table tr:first-child {
-	background-color: #009879;
+	background-color: var(--main-color);
 	color: white;
 	font-weight: 600;
 }
@@ -149,8 +154,8 @@ nav input[type="text"]:focus {
 [data-code]::after {
 	position: absolute;
 	content: "";
-	color: #009879;
-	background-color: #009879;
+	color: var(--main-color);
+	background-color: var(--main-color);
 	width: 100%;
 	height: 3px;
 	bottom: 0;
@@ -193,7 +198,7 @@ nav input[type="text"]:focus {
 	left: 30px;
 	width: 150px;
 	padding: 5px;
-	background-color: #009879;
+	background-color: var(--main-color);
 	border-radius: 4px;
 	color: white;
 	display: none;
@@ -218,8 +223,8 @@ nav input[type="text"]:focus {
 	padding: 3px 5px;
 	width: 150px;
 	background-color: rgba(173, 173, 173, 0);
-	border: 2px solid #009879;
-	color: #009879;
+	border: 2px solid var(--main-color);
+	color: var(--main-color);
 	text-align: center;
 	font-weight: 800;
 	font-size: 12px;
@@ -238,7 +243,7 @@ nav input[type="text"]:focus {
 	right: -500px;
 	top: 10px;
 	width: 500px;
-	background-color: #009879;
+	background-color: var(--main-color);
 	-webkit-box-shadow: 0px 0px 13px -5px rgba(66, 68, 90, 1);
 	-moz-box-shadow: 0px 0px 13px -5px rgba(66, 68, 90, 1);
 	box-shadow: 0px 0px 13px -5px rgba(66, 68, 90, 1);
@@ -302,7 +307,7 @@ nav input[type="text"]:focus {
 	border-radius: 10px;
 	top: 0;
 	left: 0;
-	background-color: #009879;
+	background-color: var(--main-color);
 }
 
 .loading div:nth-child(1) {

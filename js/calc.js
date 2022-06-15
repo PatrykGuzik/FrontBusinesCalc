@@ -572,9 +572,18 @@ function sendToBase(calcAnswers) {
 		time: 100,
 	};
 
-	fetch(`http://127.0.0.1:8000/api/answers/?format=json`, {
+	// fetch(`http://127.0.0.1:8000/api/answers/?format=json`, {
+	// 	method: "POST",
+	// 	body: JSON.stringify(_data),
+	// 	headers: { "Content-type": "application/json; charset=UTF-8" },
+	// }).then(response => response.json());
+
+
+	fetch(`${serv}/api/answers/?format=json`, {
 		method: "POST",
 		body: JSON.stringify(_data),
-		headers: { "Content-type": "application/json; charset=UTF-8" },
+		headers: { "Content-type": "application/json; charset=UTF-8" ,
+		'Authorization': apiKey
+	},
 	}).then(response => response.json());
 }
