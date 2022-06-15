@@ -10,9 +10,6 @@ fetch(endpoint, {
 	.then(response => response.json())
 	.then(data => checkCode(data));
 
-// fetch(endpoint)
-// 	.then(blob => blob.json())
-// 	.then(data => checkCode(data));
 
 function checkCode(data) {
 	hideLoading()
@@ -44,7 +41,6 @@ function checkCode(data) {
 
 	goToCalc()
 }
-
 
 
 function goToCalc() {

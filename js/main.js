@@ -106,10 +106,10 @@ function parseData(data) {
 
 
 
-
-function showAnswers(){
-	getValuesFromEndpoint(endpoint_values)
-}
+// DEV button
+// function showAnswers(){
+// 	getValuesFromEndpoint(endpoint_values)
+// }
 
 function hideLoading(){
 	const loading = document.querySelector(".loading-calc")

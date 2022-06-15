@@ -544,10 +544,9 @@ function getValueByName(name, data) {
 }
 
 function goToFinish(sum, calcAnswers) {
-	console.log(calcAnswers);
 	sessionStorage.setItem("sum", sum);
 	sendToBase(calcAnswers);
-	// location.href = "finish.html";
+	location.href = "finish.html";
 }
 
 function sendToBase(calcAnswers) {
@@ -570,12 +569,6 @@ function sendToBase(calcAnswers) {
 		calc_answers: toSendCalcAnswers,
 		time: 100,
 	};
-
-	// fetch(`http://127.0.0.1:8000/api/answers/?format=json`, {
-	// 	method: "POST",
-	// 	body: JSON.stringify(_data),
-	// 	headers: { "Content-type": "application/json; charset=UTF-8" },
-	// }).then(response => response.json());
 
 
 	fetch(`${serv}/api/answers/?format=json`, {
