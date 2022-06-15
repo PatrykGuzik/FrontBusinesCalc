@@ -38,12 +38,6 @@ function getQuestions(data) {
 	
 
 	generateForm(parseData, conditionalQuestions);
-
-	console.log(Form.questions);
-	
-	console.log(Form.questions.map(a=>{
-		return {category:a.category, name:a.name ,answers:a.answers, type: a.type}
-	} ));
 	
 }
 
@@ -123,5 +117,5 @@ function hideLoading(){
 	setTimeout(() => {
 		loading.style.display = "none"
 		container.style.opacity = "1"
-	}, 1000);
+	}, 0);
 }

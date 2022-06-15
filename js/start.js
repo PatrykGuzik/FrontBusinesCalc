@@ -1,4 +1,4 @@
-const endpoint = "http://127.0.0.1:8000/api/customers/?format=json";
+const endpoint = `${serv}/api/customers/?format=json`;
 
 
 
@@ -15,7 +15,9 @@ fetch(endpoint, {
 // 	.then(data => checkCode(data));
 
 function checkCode(data) {
-	console.log(data);
+	hideLoading()
+
+
 	const companies = data;
 
 	const getCoName = code => {
@@ -35,7 +37,6 @@ function checkCode(data) {
 	if (code && getCoName(code)) {
         customerName.innerHTML = getCoName(code)
 	}else{
-	    console.log("nie wybrano firmy")
         mainCustomerText.innerHTML = ""
         customerName.innerHTML = ""
         
@@ -48,20 +49,25 @@ function checkCode(data) {
 
 function goToCalc() {
 	const buttons = document.querySelectorAll("button")
-	console.log(buttons);
 
 	buttons.forEach(btn => {
 		btn.addEventListener('click', function(e){
 			if (e.target.classList.contains("employeeBtn")){
-				console.log("employee");
 				sessionStorage.setItem("role", "employee")
 			}else if (e.target.classList.contains("menagerBtn")){
-				console.log("menager")
 				sessionStorage.setItem("role", "menager")
 			}
 			location.href = "calc.html";
 		})
 	});
-	
-	
+}
+
+
+function hideLoading(){
+	const loading = document.querySelector(".loading-calc")
+	const container =  document.querySelector(".main-panel")
+	setTimeout(() => {
+		loading.style.display = "none"
+		container.style.opacity = "1"
+	}, 0);
 }

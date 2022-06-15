@@ -26,10 +26,11 @@ function getQuestions(data) {
 	const tables = document.querySelector(".tables");
 	const loadingTables = document.querySelector(".loading-tables");
 
+	// LOADING
 	setTimeout(() => {
 		tables.style.display = "block";
 		loadingTables.style.display = "none";
-	}, 1000);
+	}, 0);
 
 	let dataManager = data.filter(d => d.role == "menager");
 	let dataEmployee = data.filter(d => d.role == "employee");

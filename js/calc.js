@@ -2,7 +2,6 @@
 // ------------------------------------------------------------------------------------
 function calcManagerCarbonFootprint(data) {
 	const answers = Form.questions.map(a => a.answers);
-	console.log(answers);
 
 	// ---Odpowiedzi---
 
@@ -585,5 +584,6 @@ function sendToBase(calcAnswers) {
 		headers: { "Content-type": "application/json; charset=UTF-8" ,
 		'Authorization': apiKey
 	},
-	}).then(response => response.json());
+	}).then(response => response.json())
+	
 }
