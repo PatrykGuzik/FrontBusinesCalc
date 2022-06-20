@@ -15,11 +15,11 @@ body{
     font-size: 17px;
     font-weight: 400;
 }
+
 .customer-name{
     font-size: 18px;
     font-weight: 500;
 }
-
 
 .main-panel{
     width: 470px;
@@ -45,28 +45,27 @@ body{
     cursor: pointer;
 }
 
-
 .text-s{
     color: var(--main-color);
     font-size: 23px;
     text-align: center;
+    font-weight: 600;
+    max-width: 400px
+
 }
 
 @media (min-width: 0px) and (max-width: 576px) {
     .main-panel{
         width: 90vw;
     }
-
     body{
         justify-content:flex-start
     }
-
     .customer-info p{
         margin-top: 15vh;
         margin-bottom: 20px;
     }
 }
-
 
 /* loading */
 

@@ -6,32 +6,10 @@
     align-items: center;
     opacity: 0;
     transition: all 0.5s;
-    overflow-x: hidden;
+    /* overflow-x: hidden; */
 }
 
 
-/* .box{
-    width:100%;
-    padding: 20px;
-    background-color: aliceblue;
-    border-radius: 5px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-} */
-
-/* .box div > label{
-    display: block;
-} */
-
-/* .war{
-    margin-top: 20px;
-    display: flex;
-    align-items: flex-end;
-    justify-content: center;
-    flex-direction: column;
-} */
 
 
 
@@ -210,8 +188,8 @@
 .category-name{
     margin-top: 30vh;
     margin-bottom: 20px;
-    font-size: 0.9rem;
-    font-weight: 700;
+    font-size: 0.8rem;
+    font-weight: 600;
     text-transform: uppercase;
     text-align: center;
     transition: all 0.2s;

@@ -8,12 +8,13 @@
     font-size: 0.7rem;
     font-weight: 200;
     text-align: center;
+    margin-bottom: 10px;
 }
 
 .card .con-text ::placeholder{
     color:black; 
-    font-size: 0.6rem;
-    font-weight: 600;
+    font-size: 0.55rem;
+    font-weight: 400;
 }
 
 .card .number-box{
@@ -36,7 +37,7 @@
     color:black; 
     font-size: 13px;
     font-weight: 600;
-    margin-bottom: 3px;
+    margin-bottom: 5px;
 }
 
 .card .con-text{

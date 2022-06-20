@@ -1,4 +1,5 @@
-const page = 0;
+const page =0;
+let startTime = 0;
 let conditionalQuestions = employeeConditionalQuestions;
 const role = sessionStorage.getItem("role");
 
@@ -10,9 +11,6 @@ if (role == "menager") {
 	conditionalQuestions = managerConditionalQuestions;
 }
 
-// fetch(endpoint_questions)
-// 	.then(blob => blob.json())
-// 	.then(data => getQuestions(data));
 
 fetch(endpoint_questions, {
 	headers: {
@@ -23,6 +21,8 @@ fetch(endpoint_questions, {
 	.then(data => getQuestions(data));
 
 function getQuestions(data) {
+	startTime =  new Date().getTime()
+
 	hideLoading();
 	const sortData = data.sort((a, b) => a.number - b.number);
 
@@ -42,6 +42,11 @@ function getQuestions(data) {
 	});
 
 	generateForm(parseData, conditionalQuestions);
+
+	changeUnit() 
+
+	
+	
 }
 
 // funkcje pomocnicze -------------------------------------------------------------------------------------
@@ -124,3 +129,11 @@ function showLoadind(){
 	container.style.opacity = "0";
 }
 
+
+// Change l -> kwh
+
+function changeUnit() {
+	const a = document.querySelector('.sbq-card11').lastChild
+	const b = a.querySelector('label').querySelector('span')
+	b.innerHTML = 'kWh'
+}

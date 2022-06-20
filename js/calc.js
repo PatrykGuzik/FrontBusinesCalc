@@ -544,13 +544,21 @@ function getValueByName(name, data) {
 }
 
 function goToFinish(sum, calcAnswers) {
+	const stopTime = new Date().getTime()
+	const fullTime = parseInt((stopTime - startTime)/1000) 
+
 	showLoadind()
 	sessionStorage.setItem("sum", sum);
-	sendToBase(calcAnswers);
-	location.href = "finish.html";
+	sendToBase(calcAnswers, fullTime);
+
+	setTimeout(() => {
+		location.href = "finish.html";
+	}, 1000);
+	
+	
 }
 
-function sendToBase(calcAnswers) {
+function sendToBase(calcAnswers, fullTime) {
 	const toSendRawAnswers = JSON.stringify(
 		Form.questions.map(a => {
 			return {
@@ -568,7 +576,7 @@ function sendToBase(calcAnswers) {
 		role: sessionStorage.getItem("role"),
 		raw_answers: toSendRawAnswers,
 		calc_answers: toSendCalcAnswers,
-		time: 100,
+		time: fullTime,
 	};
 
 

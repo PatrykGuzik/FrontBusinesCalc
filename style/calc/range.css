@@ -5,7 +5,7 @@
     background: linear-gradient(90deg, #17A8B5 50%, #A6D9DE 50%);
     border-radius: 30px;
     outline: none;
-    opacity: 0.7;
+    opacity: 0.9;
     -webkit-transition: .2s;
     transition: opacity .2s;
     margin-bottom: 40px;
@@ -37,7 +37,8 @@
 .card p{
     text-align: center;
     color: #DF4171;
-    font-size: 0.9rem;
+    font-size: 0.85rem;
+    font-weight: 600;
 }
 
 
