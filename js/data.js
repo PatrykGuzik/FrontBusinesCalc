@@ -1,5 +1,6 @@
 const employeeConditionalQuestions = [
 	{ indexQuestion: 0, type: "radio", ifIsChecked: 0, hide: [1,13,14,15,16,17] },
+	// przeskoczenie z 0 na 2 jeżeli zaznaczona praca w biurze
 	{ indexQuestion: 0, type: "radio", ifIsChecked: 2, hide: [6,7,8] },
 	{ indexQuestion: 2, type: "radio", ifIsChecked: 1, hide: [3] },
 	{ indexQuestion: 4, type: "radio", ifIsChecked: 1, hide: [5] },

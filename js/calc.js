@@ -225,12 +225,16 @@ function calcEmployeeCarbonFootprint(data) {
 	if (workStyle == 2) remoteValue = (nrDaysInOffice / 5) * 222;
 	if (workStyle == 3) remoteValue = 222;
 
+	let dayOfRemoteWork = 222
+	if (workStyle == 2) dayOfRemoteWork = (nrDaysInOffice / 5) * 222;
+	if (workStyle == 3) dayOfRemoteWork = 0;
+
 	let Laptop_CO2 =
-		(useLaptop * getValueByName("E_PZ_laptop", data) * remoteValue) / 5;
+		(useLaptop * getValueByName("E_PZ_laptop", data) * dayOfRemoteWork) / 5;
 	let Comp_CO2 =
-		(useComp * getValueByName("E_PZ_comp", data) * remoteValue) / 5;
+		(useComp * getValueByName("E_PZ_comp", data) * dayOfRemoteWork) / 5;
 	let Tablet_CO2 =
-		(useTablet * getValueByName("E_PZ_tablet", data) * remoteValue) / 5;
+		(useTablet * getValueByName("E_PZ_tablet", data) * dayOfRemoteWork) / 5;
 	let Meetings_CO2 = timeOnMeetings * getValueByName("E_PZ_meet", data);
 	let Monitors_CO2 = nbMonitors * Laptop_CO2;
 
@@ -244,7 +248,7 @@ function calcEmployeeCarbonFootprint(data) {
 	let REMOTE_CO2 =
 		Laptop_CO2 + Comp_CO2 + Tablet_CO2 + Meetings_CO2 + Monitors_CO2;
 
-	// jeżeli ktoś nie pracuje zdalnie ustaw 0
+	// jeżeli ktoś NIE pracuje zdalnie ustaw 0
 	if(workStyle === 3) REMOTE_CO2 = 0;
 
 	// console.log("praca zdalna:", REMOTE_CO2);
