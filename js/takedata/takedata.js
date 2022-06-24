@@ -132,13 +132,18 @@ function getCustomers(data) {
 		if (!e.target.dataset.code) return;
 		if (e.target.dataset.code == "all") {
 			document.querySelector(".customer-name").innerHTML = "Wszystkie";
+			document.querySelector(".customer-info").innerHTML = "";
+			document.querySelector(".customer-code").innerHTML ="";
 		} else {
 			const code = e.target.dataset.code;
+			const host = location.host
+			console.log(location);
 
 			const name = data.find(d => d.code == code).name;
 			const info = data.find(d => d.code == code).info;
 			document.querySelector(".customer-name").innerHTML = name;
 			document.querySelector(".customer-info").innerHTML = info;
+			document.querySelector(".customer-code").innerHTML = `<span>link:<span> <a href="index.html?code=${code}" target="_blanc">${host}/index.html?code=${code}</a>`;
 		}
 	});
 }

@@ -11,6 +11,10 @@ body {
 	padding: 10px;
 }
 
+a{
+	color: var(--main-color);
+}
+
 table {
 	margin-bottom: 30px;
 	border-radius: 10px;
@@ -208,6 +212,9 @@ nav input[type="text"]:focus {
 .customer-name {
 	font-size: 40px;
 	font-weight: 800;
+}
+.customer-code{
+	margin: 20px 0;
 }
 
 .main-header {
