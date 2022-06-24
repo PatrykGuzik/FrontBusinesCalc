@@ -133,7 +133,11 @@ function showLoadind(){
 // Change l -> kwh
 
 function changeUnit() {
-	const a = document.querySelector('.sbq-card11').lastChild
-	const b = a.querySelector('label').querySelector('span')
-	b.innerHTML = 'kWh'
+	if (role == "menager"){
+		const a = document.querySelector('.sbq-card11').lastChild
+		const b = a.querySelector('label').querySelector('span')
+		b.innerHTML = 'kWh'
+	}
+
+	
 }

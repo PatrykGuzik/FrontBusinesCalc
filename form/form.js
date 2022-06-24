@@ -74,7 +74,7 @@ class Form{
 			return `
 			<div class="btns-step">
 				<div class="btns-step"><button data-previous type='button'></button> 
-				<button data-send type='button'>SEND</button></div>
+				<button data-send type='button'>WYŚLIJ</button></div>
 			</div>
 			
 			`;

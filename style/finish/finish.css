@@ -13,7 +13,25 @@ body{
     background: #EEEEEE;
 }
 
+a{
+    color:#468341;
+}
+
+.container{
+    max-width: 500px;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
 
 .container h1{
     color: var(--main-color);
+}
+
+.container h4{
+    text-align: center;
+    margin-top: 0;
 }

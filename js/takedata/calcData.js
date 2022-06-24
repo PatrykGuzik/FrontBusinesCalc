@@ -10,7 +10,7 @@ function drawTableCalc(data, table, role) {
 	
 	const lengthOfTable = JSON.parse(data[0].calc_answers).length
 	const lengthOfRows = data.length
-	console.log(lengthOfTable);
+
 
 
 	// let sumForAny = JSON.parse(data[0].calc_answers).map(d => {
@@ -84,7 +84,6 @@ function drawTableCalc(data, table, role) {
 		const rows = data.map(d=> JSON.parse(d.calc_answers))
 		return rows.map(row => row[index].co2).reduce((p,c) => p+c)
 	}
-	console.log(getSumByIndex(2));
 
 	let lastRow = ``
 

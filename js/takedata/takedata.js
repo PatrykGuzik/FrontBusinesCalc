@@ -148,7 +148,8 @@ function getCustomers(data) {
 
 			removeAllActiveClass()
 			const c = document.querySelector(`[data-code='${code}']`)
-			c.classList.add("active")
+			console.log(c);
+			c.classList.add('active')
 
 		}
 	});
@@ -176,7 +177,6 @@ function removeAllActiveClass() {
 	const c = customers.querySelectorAll("[data-code]")
 
 	c.forEach(element => {
-		console.log(element);
 		element.classList.remove('active')
 	});
 	
