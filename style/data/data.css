@@ -185,6 +185,7 @@ nav input[type="text"]:focus {
 	margin: 10px;
 	position: relative;
 	overflow: hidden;
+	transition: all 0.3s;
 }
 
 [data-code]::after {
@@ -208,6 +209,11 @@ nav input[type="text"]:focus {
 [data-code]:hover {
 	cursor: pointer;
 }
+
+[data-code].active{
+	color: var(--main-color);
+}
+
 
 .customer-name {
 	font-size: 40px;

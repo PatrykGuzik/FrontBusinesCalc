@@ -64,6 +64,7 @@ function getQuestions(data) {
 		}
 
 		drawTabs();
+		removeAllActiveClass()
 	});
 
 	// zmiana typu danych
@@ -133,17 +134,22 @@ function getCustomers(data) {
 		if (e.target.dataset.code == "all") {
 			document.querySelector(".customer-name").innerHTML = "Wszystkie";
 			document.querySelector(".customer-info").innerHTML = "";
-			document.querySelector(".customer-code").innerHTML ="";
+			document.querySelector(".customer-code").innerHTML = "";
 		} else {
+			
 			const code = e.target.dataset.code;
 			const host = location.host
-			console.log(location);
 
 			const name = data.find(d => d.code == code).name;
 			const info = data.find(d => d.code == code).info;
 			document.querySelector(".customer-name").innerHTML = name;
 			document.querySelector(".customer-info").innerHTML = info;
 			document.querySelector(".customer-code").innerHTML = `<span>link:<span> <a href="index.html?code=${code}" target="_blanc">${host}/index.html?code=${code}</a>`;
+
+			removeAllActiveClass()
+			const c = document.querySelector(`[data-code='${code}']`)
+			c.classList.add("active")
+
 		}
 	});
 }
@@ -159,4 +165,19 @@ function drawCustomerList(data) {
 		customersList += `<div data-code="${d.code}">${d.name}</div>`;
 	});
 	customersBox.innerHTML = customersList;
+}
+
+
+
+
+
+function removeAllActiveClass() {
+	const customers = document.querySelector(".customers");
+	const c = customers.querySelectorAll("[data-code]")
+
+	c.forEach(element => {
+		console.log(element);
+		element.classList.remove('active')
+	});
+	
 }
