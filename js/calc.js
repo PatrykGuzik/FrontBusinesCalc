@@ -214,10 +214,11 @@ function calcEmployeeCarbonFootprint(data) {
 	const useLaptop = useDevices[0];
 	const useComp = useDevices[1];
 	const useTablet = useDevices[2];
-	// 7 Ile godzin dziennie spędzasz na spotkaniach?
-	const timeOnMeetings = getAloneAnswerFromInputText(answers, 7);
-	// 8 Na ilu ekranach pracujesz?
-	const nbMonitors = getAloneAnswerFromInputText(answers, 8);
+	// 7 Na ilu ekranach pracujesz?
+	const nbMonitors = getAloneAnswerFromInputText(answers, 7);
+	// 8 Ile godzin dziennie spędzasz na spotkaniach?
+	const timeOnMeetings = getAloneAnswerFromInputText(answers, 8);
+	
 
 	// praca zdalna
 	let remoteValue = 0;
@@ -233,6 +234,7 @@ function calcEmployeeCarbonFootprint(data) {
 	let Meetings_CO2 = timeOnMeetings * getValueByName("E_PZ_meet", data);
 	let Monitors_CO2 = nbMonitors * Laptop_CO2;
 
+	// console.log("__________praca zdalna__________");
 	// console.log("laptop ",Laptop_CO2);
 	// console.log("comp ",Comp_CO2);
 	// console.log("tablet ", Tablet_CO2);
@@ -241,6 +243,9 @@ function calcEmployeeCarbonFootprint(data) {
 
 	let REMOTE_CO2 =
 		Laptop_CO2 + Comp_CO2 + Tablet_CO2 + Meetings_CO2 + Monitors_CO2;
+
+	// jeżeli ktoś nie pracuje zdalnie ustaw 0
+	if(workStyle === 3) REMOTE_CO2 = 0;
 
 	// console.log("praca zdalna:", REMOTE_CO2);
 
@@ -296,7 +301,7 @@ function calcEmployeeCarbonFootprint(data) {
 
 	//DEV--------------
 	// carKm = 25
-	// remoteValue = 222
+	// remoteValue = 177.6
 	// carFuelConsum = 7
 	// nrPassengers = 2
 
@@ -305,13 +310,8 @@ function calcEmployeeCarbonFootprint(data) {
 	let typeFuel = 0;
 
 	let car_co2 = 0;
-	let bus_co2 =
-		((carKm * remoteValue * getValueByName("E_T_fuel_diesel", data) * 30) /
-			100 /
-			35) *
-		transBus;
-	let tram_co2 =
-		transTram * getValueByName("E_T_tram", data) * carKm * remoteValue * 0.698;
+	let bus_co2 = carKm * remoteValue * getValueByName("E_T_bus", data) * transBus;
+	let tram_co2 = transTram * getValueByName("E_T_tram", data) * carKm * remoteValue ;
 	let bike_co2 = 0;
 	let foot_co2 = 0;
 	let train_co2 =
@@ -338,7 +338,7 @@ function calcEmployeeCarbonFootprint(data) {
 			nrPassengers;
 	}
 
-	const TRANSPORT_TO_WORK_CO2 =
+	let TRANSPORT_TO_WORK_CO2 =
 		car_co2 +
 		bus_co2 +
 		tram_co2 +
@@ -348,25 +348,31 @@ function calcEmployeeCarbonFootprint(data) {
 		carpooling_co2 +
 		metro_co2;
 
-	// console.log(car_co2);
-	// console.log(bus_co2);
-	// console.log(tram_co2);
-	// console.log(bike_co2);
-	// console.log(foot_co2);
-	// console.log(train_co2);
-	// console.log(carpooling_co2);
-	// console.log(metro_co2);
-	// console.log(TRANSPORT_TO_WORK_CO2);
+	// jeżeli praca zdalna ustaw dojazd do pracy na 0
+	if(workStyle === 1) TRANSPORT_TO_WORK_CO2 = 0
+
+	
+	console.log("__transport__");
+	console.log("car",car_co2);
+	console.log("bus",bus_co2);
+	console.log("tram",tram_co2);
+	console.log("bike",bike_co2);
+	console.log("foot",foot_co2);
+	console.log("train",train_co2);
+	console.log("carpooling",carpooling_co2);
+	console.log("metro",metro_co2);
+	console.log("transport to work",TRANSPORT_TO_WORK_CO2);
 
 	const FLY_CO2 = flyHours * 850 * getValueByName("E_T_fly", data);
-
-	console.log(FLY_CO2);
+	console.log("fly", FLY_CO2);
+	
 
 	const TRANSPORT_CO2 = TRANSPORT_TO_WORK_CO2 + FLY_CO2;
 
 	//SUMA
 	const SUM_EMPLOYEE_CO2 = GENERAL_CO2 + REMOTE_CO2 + FOOD_CO2 + TRANSPORT_CO2;
 
+	console.log("________podsumowanie________");
 	console.log("ogólne: ", GENERAL_CO2);
 	console.log("praca zdalna: ", REMOTE_CO2);
 	console.log("jedzenie: ", FOOD_CO2);
@@ -547,12 +553,12 @@ function goToFinish(sum, calcAnswers) {
 	const stopTime = new Date().getTime()
 	const fullTime = parseInt((stopTime - startTime)/1000) 
 
-	showLoadind()
+	// showLoadind()
 	sessionStorage.setItem("sum", sum);
 	sendToBase(calcAnswers, fullTime);
 
 	setTimeout(() => {
-		location.href = "finish.html";
+		// location.href = "finish.html";
 	}, 1000);
 	
 	

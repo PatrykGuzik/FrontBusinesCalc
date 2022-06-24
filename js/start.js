@@ -8,9 +8,8 @@ fetch(endpoint, {
 	.then(response => response.json())
 	.then(data => checkCode(data));
 
-
 function checkCode(data) {
-	hideLoading()
+	hideLoading();
 
 	const companies = data;
 
@@ -20,47 +19,42 @@ function checkCode(data) {
 		return findCompany;
 	};
 
-
 	const myUrl = new URL(window.location.href);
 	const code = myUrl.searchParams.get("code");
 	const customerName = document.querySelector(".customer-name");
 	const mainCustomerText = document.querySelector("#main-customer-text");
-	sessionStorage.setItem("code", code)
-
+	sessionStorage.setItem("code", code);
 
 	if (code && getCoName(code)) {
-        customerName.innerHTML = getCoName(code)
-	}else{
-        mainCustomerText.innerHTML = ""
-        customerName.innerHTML = ""
-        
+		customerName.innerHTML = getCoName(code);
+	} else {
+		mainCustomerText.innerHTML = "";
+		customerName.innerHTML = "";
 	}
 
-	goToCalc()
+	goToCalc();
 }
 
-
 function goToCalc() {
-	const buttons = document.querySelectorAll("button")
+	const buttons = document.querySelectorAll("button");
 
 	buttons.forEach(btn => {
-		btn.addEventListener('click', function(e){
-			if (e.target.classList.contains("employeeBtn")){
-				sessionStorage.setItem("role", "employee")
-			}else if (e.target.classList.contains("menagerBtn")){
-				sessionStorage.setItem("role", "menager")
+		btn.addEventListener("click", function (e) {
+			if (e.target.classList.contains("employeeBtn")) {
+				sessionStorage.setItem("role", "employee");
+			} else if (e.target.classList.contains("menagerBtn")) {
+				sessionStorage.setItem("role", "menager");
 			}
 			location.href = "calc.html";
-		})
+		});
 	});
 }
 
-
-function hideLoading(){
-	const loading = document.querySelector(".loading-calc")
-	const container =  document.querySelector(".main-panel")
+function hideLoading() {
+	const loading = document.querySelector(".loading-calc");
+	const container = document.querySelector(".main-panel");
 	setTimeout(() => {
-		loading.style.display = "none"
-		container.style.opacity = "1"
+		loading.style.display = "none";
+		container.style.opacity = "1";
 	}, 0);
 }

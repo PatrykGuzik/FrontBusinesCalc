@@ -188,7 +188,7 @@ class MultistepForm {
 
 	// POKAZUJE Jeżeli zaznaczone
 	isCheckedInCheckbox(questionIndex, answerIndex){
-		return Form.questions[questionIndex].getAnswers()[answerIndex] === false;
+		return Form.questions[questionIndex].getAnswers()[answerIndex[0]] === false && Form.questions[questionIndex].getAnswers()[answerIndex[1]] === false;
 	}
 
 	// POKAZUJE Jeżeli zgodne z wartoścą

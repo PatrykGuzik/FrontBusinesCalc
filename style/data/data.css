@@ -69,6 +69,19 @@ table tr td {
 	padding: 5px 10px;
 }
 
+table .average{
+	background-color: white;
+	border-top: 2px solid #00987a86;
+	border-radius: 5px;
+}
+
+table tr:last-child td:first-child{
+	border-radius: 0 0 0 10px ;
+}
+table tr:last-child td:last-child{
+	border-radius: 0 0 10px 0  ;
+}
+
 /* 
 table tr:hover{
     background-color: #dafcf5;

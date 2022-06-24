@@ -2,6 +2,11 @@ function drawTableRaw(data, table, role) {
 	// const tableManager = document.querySelector("[data-manager]");
     const tableRaw = table
 
+	if(!data[0]){
+		tableRaw.innerHTML = ''
+		return	
+	} 
+
 	let headerTable = `${getHeader(["lp", "kod", "data", "czas"])}`;
 	let bodyTable = "";
 
