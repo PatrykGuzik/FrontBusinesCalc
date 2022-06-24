@@ -553,13 +553,13 @@ function goToFinish(sum, calcAnswers) {
 	const stopTime = new Date().getTime()
 	const fullTime = parseInt((stopTime - startTime)/1000) 
 
-	// showLoadind()
+	showLoadind()
 	sessionStorage.setItem("sum", sum);
 	sendToBase(calcAnswers, fullTime);
 
 	setTimeout(() => {
-		// location.href = "finish.html";
-	}, 1000);
+		location.href = "finish.html";
+	}, 2000);
 	
 	
 }

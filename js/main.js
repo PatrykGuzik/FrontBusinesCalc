@@ -1,4 +1,4 @@
-const page = 0;
+const page = 12;
 let startTime = 0;
 let conditionalQuestions = employeeConditionalQuestions;
 const role = sessionStorage.getItem("role");
