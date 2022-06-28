@@ -13,7 +13,7 @@ const code  = sessionStorage.getItem("code")
 const role  = sessionStorage.getItem("role")
 
 if (code != "null"){
-    if(role=="menager"){
+    if(suma_kg > 1000){
         sum.innerHTML = `Twój roczny ślad węglowy: ${sumaToShow}t`
     }else{
         sum.innerHTML = `Twój roczny ślad węglowy: ${sumaToShow}kg`
