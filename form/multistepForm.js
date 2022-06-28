@@ -117,6 +117,8 @@ class MultistepForm {
 		}
 	}
 
+	// conditional questions
+
 	hideQuestion(dataStepIndex) {
 		this.visibleSteps = this.arrayRemove(this.visibleSteps, dataStepIndex);
 	}

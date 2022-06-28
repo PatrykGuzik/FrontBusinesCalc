@@ -21,6 +21,7 @@ if (code != "null"){
     
     
 }else{
+    sessionStorage.setItem("sum", "null")
     sum.innerHTML = `<p>Jeżeli chcesz poznać ślad węglowy swojej firmy skontaktuj się z nami:</p> <a href="https://carbonfootprintfoundation.com/dla-biznesu/">Carbon Footprint Foundation</a>`
 }
 

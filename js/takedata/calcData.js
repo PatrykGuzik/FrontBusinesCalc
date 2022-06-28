@@ -1,7 +1,6 @@
 function drawTableCalc(data, table, role) {
 	const tableCalc = table;
 
-	// console.log(data);
 	if(!data[0]){
 		tableCalc.innerHTML = ''
 		return	
@@ -93,7 +92,6 @@ function drawTableCalc(data, table, role) {
 
 
 	bodyTable += `<tr class="average">${getHeader(["średnia", "", "", ""])}${lastRow}</tr>`;
-	// console.log("suma", sumForAny);
 
 	if (role == "manager") dataToDownloadManager = `${headerCSV}${bodyCSV}`;
 	if (role == "employee") dataToDownloadEmployee = `${headerCSV}${bodyCSV}`;

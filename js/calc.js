@@ -115,19 +115,19 @@ function calcManagerCarbonFootprint(data) {
 		WaterConsum_CO2 +
 		SewageProd_CO2;
 
-	console.log("electr: ", ElectrycityEnergy_CO2.toFixed(4));
-	console.log("warm: ", WarmEnergy_CO2.toFixed(4));
-	console.log("gas: ", GasConsum_CO2.toFixed(4));
-	console.log("waste: ", Waste_CO2.toFixed(4));
-	console.log("transport: ", SumTransport_CO2.toFixed(4));
-	console.log("water: ", WaterConsum_CO2.toFixed(4));
-	console.log("sewage: ", SewageProd_CO2.toFixed(4));
+	// console.log("electr: ", ElectrycityEnergy_CO2.toFixed(4));
+	// console.log("warm: ", WarmEnergy_CO2.toFixed(4));
+	// console.log("gas: ", GasConsum_CO2.toFixed(4));
+	// console.log("waste: ", Waste_CO2.toFixed(4));
+	// console.log("transport: ", SumTransport_CO2.toFixed(4));
+	// console.log("water: ", WaterConsum_CO2.toFixed(4));
+	// console.log("sewage: ", SewageProd_CO2.toFixed(4));
 
-	console.log("SUMA: ", SUM_MENEGER_CO2);
+	// console.log("SUMA: ", SUM_MENEGER_CO2);
 
 	const a = 2.495836475;
 	const b = 3.65656565;
-	console.log("Test:", parseFloat(a.toFixed(4)) + parseFloat(b.toFixed(4)));
+	// console.log("Test:", parseFloat(a.toFixed(4)) + parseFloat(b.toFixed(4)));
 	const calcAnswers = [
 		{
 			name: "elektryczność",
@@ -356,19 +356,19 @@ function calcEmployeeCarbonFootprint(data) {
 	if(workStyle === 1) TRANSPORT_TO_WORK_CO2 = 0
 
 	
-	console.log("__transport__");
-	console.log("car",car_co2);
-	console.log("bus",bus_co2);
-	console.log("tram",tram_co2);
-	console.log("bike",bike_co2);
-	console.log("foot",foot_co2);
-	console.log("train",train_co2);
-	console.log("carpooling",carpooling_co2);
-	console.log("metro",metro_co2);
-	console.log("transport to work",TRANSPORT_TO_WORK_CO2);
+	// console.log("__transport__");
+	// console.log("car",car_co2);
+	// console.log("bus",bus_co2);
+	// console.log("tram",tram_co2);
+	// console.log("bike",bike_co2);
+	// console.log("foot",foot_co2);
+	// console.log("train",train_co2);
+	// console.log("carpooling",carpooling_co2);
+	// console.log("metro",metro_co2);
+	// console.log("transport to work",TRANSPORT_TO_WORK_CO2);
 
 	const FLY_CO2 = flyHours * 850 * getValueByName("E_T_fly", data);
-	console.log("fly", FLY_CO2);
+	// console.log("fly", FLY_CO2);
 	
 
 	const TRANSPORT_CO2 = TRANSPORT_TO_WORK_CO2 + FLY_CO2;
@@ -376,12 +376,12 @@ function calcEmployeeCarbonFootprint(data) {
 	//SUMA
 	const SUM_EMPLOYEE_CO2 = GENERAL_CO2 + REMOTE_CO2 + FOOD_CO2 + TRANSPORT_CO2;
 
-	console.log("________podsumowanie________");
-	console.log("ogólne: ", GENERAL_CO2);
-	console.log("praca zdalna: ", REMOTE_CO2);
-	console.log("jedzenie: ", FOOD_CO2);
-	console.log("transport: ", TRANSPORT_CO2);
-	console.log("suma: ", SUM_EMPLOYEE_CO2);
+	// console.log("________podsumowanie________");
+	// console.log("ogólne: ", GENERAL_CO2);
+	// console.log("praca zdalna: ", REMOTE_CO2);
+	// console.log("jedzenie: ", FOOD_CO2);
+	// console.log("transport: ", TRANSPORT_CO2);
+	// console.log("suma: ", SUM_EMPLOYEE_CO2);
 
 	const calcAnswers = [
 		{

@@ -62,7 +62,7 @@ function showQuestionInfo(dataManager, dataEmployee) {
     tables.addEventListener("mouseover", (e)=>{
         
         if(e.target.dataset.name){
-            console.log(e.target.dataset.name, e.target.dataset.type);
+            // console.log(e.target.dataset.name, e.target.dataset.type);
             infoBox.classList.add("active")
             infoBoxName.innerHTML = e.target.dataset.name
             infoBoxContent.innerHTML = getInfoByName(allQuestions, e.target.dataset.name, e.target.dataset)
@@ -73,9 +73,9 @@ function showQuestionInfo(dataManager, dataEmployee) {
 }
 
 function getInfoByName(data, name, dataset) {
-    console.log(data);
+    // console.log(data);
     const question = data.find(a => a.name==name)
-    console.log(question);
+    // console.log(question);
 
 
 
@@ -107,7 +107,7 @@ function getInfoByName(data, name, dataset) {
     if(question.type == "radio") {
         let ans = "0-brak odpowiedzi "
         question.answers.forEach((answer, index) => {
-            console.log(answer.subquestion );
+            // console.log(answer.subquestion );
             ans += `${index+1}-${answer.subquestion} `
         });
         
